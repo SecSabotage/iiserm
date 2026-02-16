@@ -7,27 +7,36 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #fce4ec; /* Soft pink background */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
         .card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
+            max-width: 400px;
+            width: 90%;
         }
         h1 {
             color: #ff4757;
             font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
         p {
             color: #2f3542;
             font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .gif-container img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 1rem;
         }
         .emoji {
             font-size: 3rem;
@@ -38,9 +47,14 @@
 
     <div class="card">
         <div class="emoji">🍿🍿🍿</div>
-        <h1>I'm sorry, Patsky!</h1>
-        <p>(For missing out on our 9pm binge :o)</p>
-        <p style="font-size: 0.9rem; color: #747d8c;">I'll make it up to you.</p>
+        <h1>lol sorry Patsky</h1>
+        <p>(For missing out on our binge)</p>
+        
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif" alt="Cute Cat Apology">
+        </div>
+
+        <p style="font-size: 0.9rem; color: #747d8c; margin-top: 1.5rem;">I'll give u 1 kitkat btw :o</p>
     </div>
 
 </body>
