@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL // ACCESS GRANTED</title>
+    <style>
+        /* Dark Web / Terminal Aesthetic */
+        body {
+            background-color: #0a0a0a;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            margin: 0;
+            text-shadow: 0 0 5px #00ff41;
+            line-height: 1.6;
+        }
+        .container {
+            border: 1px solid #00ff41;
+            padding: 25px;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(0, 255, 65, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            position: relative;
+        }
+        .header {
+            border-bottom: 2px solid #00ff41;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .log-entry {
+            margin: 20px 0;
+            padding: 12px;
+            border-left: 3px solid #ff4757;
+            background: rgba(255, 71, 87, 0.05);
+        }
+        .redacted {
+            background-color: #00ff41;
+            color: #0a0a0a;
+            padding: 0 5px;
+            font-weight: bold;
+        }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        
+        /* Scanline effect */
+        .container::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            > INTERNAL_SERVER_LEAK // SUBJECT: V. <span class="blink">_</span>
+        </div>
+        
+        <p>[!] ENCRYPTION BYPASSED. ACCESSING LAB_REPORTS_DIR...</p>
+        
+        <div class="log-entry">
+            <strong>[LOG_V-01]:</strong> Subject V continues to treat the lab like a Clean Room. Refuses to accept that reality has a &plusmn; error margin.
+        </div>
+
+        <div class="log-entry">
+            <strong>[LOG_V-02]:</strong> "The Room Temp Incident." Entire squad forced to repeat. Subject claimed <span class="redacted">20&deg;C</span> was "fiction." Demanded a 4-decimal place reading for a basic experiment.
+        </div>
+
+        <div class="log-entry">
+            <strong>[LOG_V-03]:</strong> Rumor: Subject calibrates his bathroom scale every morning using a 10kg standard weight. Peak perfectionist behavior detected.
+        </div>
+
+        <div class="log-entry" style="border-left-color: #00ff41; background: rgba(0, 255, 65, 0.05);">
+            <strong>[DECRYPTED_MSG]:</strong> "Bro, it's just physics lab, not the CERN Hadron Collider. Let us go home."
+        </div>
+
+        <footer style="margin-top: 40px; font-size: 0.75rem; color: #444; text-align: center;">
+            // TRACE_CLEARED // ELECTRODYNAMICS_LOADED // PACKET_SENT //
+        </footer>
+    </div>
+
+</body>
+</html>
