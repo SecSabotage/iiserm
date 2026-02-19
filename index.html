@@ -385,6 +385,29 @@
         function closeAlert() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('fakeAlert').style.display = 'none';
+
+
+        // The Trash Can Logic
+        function throwIntoTrash(event) {
+            // Stop the fake 504 error from popping up when they click submit
+            event.stopPropagation(); 
+            
+            const form = document.getElementById('formContainer');
+            const trash = document.getElementById('trashBin');
+            const message = document.getElementById('voidMessage');
+
+            // Show the trash can
+            trash.style.opacity = '1';
+
+            // Trigger the crumple and throw animation on the form
+            form.classList.add('crumple-throw');
+
+            // Wait for the animation to finish, then show the sarcastic success message
+            setTimeout(() => {
+                trash.style.opacity = '0';
+                message.style.display = 'block';
+            }, 1200); // 1.2 seconds matches the CSS animation duration
+        }
         }
     </script>
 
