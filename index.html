@@ -187,6 +187,79 @@
              font-style: italic;
              margin-top: 0.5rem;
         }
+
+        /* Grievance Portal Styling */
+        .grievance-section {
+            max-width: 600px;
+            margin: 4rem auto;
+            text-align: center;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #d9534f;
+            position: relative;
+        }
+        .grievance-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.5s ease;
+        }
+        .grievance-form textarea {
+            width: 100%;
+            height: 120px;
+            padding: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: none;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: #c9302c;
+        }
+        
+        /* The Trash Animation */
+        .trash-bin {
+            font-size: 5rem;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .crumple-throw {
+            animation: crumple 1.2s forwards;
+            pointer-events: none;
+        }
+        @keyframes crumple {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            40% { transform: scale(0.3) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(0) rotate(360deg) translateY(300px); opacity: 0; }
+        }
+        .void-message {
+            display: none;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -240,12 +313,58 @@
                 </div>
             </div>
 
+            <div class="card">
+                <h3>The Laundry Hunger Games</h3>
+                <p>We proudly offer two fully functioning washing machines for an entire hostel block of 400 students. Securing a slot requires the tactical brilliance of a military general, sleep deprivation, and sheer luck. May the odds be ever in your favor.</p>
+            </div>
+
+            <div class="card">
+                <h3>The Mess Food Mystery</h3>
+                <p>Our mess hall pioneers culinary research by serving the exact same mysterious, unidentifiable yellow dal six days a week. We consider this nutritional repetition an essential part of building our students' biological immunity and mental fortitude.</p>
+            </div>
+
+            <div class="card">
+                <h3>The Bureaucratic Black Hole</h3>
+                <p>Need a Wi-Fi complaint resolved or a form signed? Experience our legendary red tape! Please submit three hard copies to four different buildings across the campus sand dunes, only to discover the clerk has been on a tea break since 2018.</p>
+            </div>
+
+            <div class="card">
+                <h3>Micro-Optics Training (Lecture Halls)</h3>
+                <p>Why utilize modern digital displays when you can squint? We proudly pack hundreds of students into 20+ rows of seating while our esteemed professors write microscopic equations on a traditional chalkboard. The lack of visibility builds character, and inhaling the ambient chalk dust connects you directly to the elements.</p>
+            </div>
+
+            <div class="card">
+                <h3>The "Figure It Out" Laboratories</h3>
+                <p>Our labs simulate the thrilling constraints of 19th-century science. Featuring chronically under-equipped workstations, you will learn to improvise. Need assistance? Consult our Teaching Assistants, whose primary qualification is looking just as confused about the broken apparatus as you are.</p>
+            </div>
+
         </div>
     </div>
 
+    
+<div class="grievance-section">
+        <h2 style="color: #d9534f; margin-top: 0;">Official Grievance Redressal</h2>
+        <p>Report Wi-Fi outages, sand dunes, or missing LAN cables here. Our team reviews these instantly.</p>
+        
+        <div id="formContainer" class="grievance-form">
+            <textarea placeholder="Describe your issue in detail (it won't matter)..."></textarea>
+            <button class="submit-btn" onclick="throwIntoTrash(event)">Submit Official Complaint</button>
+        </div>
+
+        <div id="trashBin" class="trash-bin">🗑️</div>
+        <div id="voidMessage" class="void-message">
+            ✅ Complaint successfully forwarded to the void!<br>
+            <span style="font-size: 0.9rem; color: #666; font-weight: normal; margin-top: 10px; display: inline-block;">
+                (Expected resolution time: Heat Death of the Universe)
+            </span>
+        </div>
+    </div>
+
+    
     <footer>
         <p>In Pursuit of Knowledge (If the page ever loads)</p>
         <p class="tiny-text">parody.</p>
+    
     </footer>
 
 
