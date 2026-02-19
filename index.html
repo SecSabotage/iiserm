@@ -106,10 +106,62 @@
             font-size: 0.7rem;
             opacity: 0.5;
         }
+        /* Fake Alert Styling */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+        .fake-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2.5rem;
+            border-top: 5px solid #d9534f; /* Danger red */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+        }
+        .fake-alert h3 {
+            color: #d9534f;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .fake-alert button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .fake-alert button:hover {
+            background: #002236;
+        }
     </style>
 </head>
 <body>
-
+    
+<div class="overlay" id="overlay"></div>
+    <div class="fake-alert" id="fakeAlert">
+        <h3>Connection Lost</h3>
+        <p>Error 504: The campus router is currently taking a nap. Please wait 3 to 5 business days for the packet to be delivered via carrier pigeon.</p>
+        <button onclick="closeAlert()">Diagnose Network (Fails)</button>
+    </div>
+    
     <header>
         <div class="logo-text">IISER Mohali <span style="font-size: 0.8rem; font-weight: normal;">*</span></div>
         <nav>
@@ -154,5 +206,27 @@
         <p class="tiny-text">parody.</p>
     </footer>
 
+
+    <script>
+        // Listen for clicks anywhere on the page
+        document.body.addEventListener('click', function(e) {
+            // Don't trigger if they are clicking the modal button itself
+            if (e.target.tagName === 'BUTTON' || e.target.closest('.fake-alert')) return;
+            
+            // 25% chance to trigger on any random click so it feels authentically broken
+            if (Math.random() < 0.25) {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('fakeAlert').style.display = 'block';
+            }
+        });
+
+        // Function to close the modal when they hit the button
+        function closeAlert() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('fakeAlert').style.display = 'none';
+        }
+    </script>
+
+    
 </body>
 </html>
