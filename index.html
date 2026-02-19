@@ -151,6 +151,42 @@
         .fake-alert button:hover {
             background: #002236;
         }
+
+
+        /* Fake Map Placeholder Styles */
+        .map-placeholder {
+            background: #e9ecef; /* Official-looking light grey background */
+            border: 2px dashed #adb5bd; /* Dashed border suggesting something is missing */
+            border-radius: 4px;
+            height: 180px; /* Fixed height box */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: #6c757d;
+            text-align: center;
+            padding: 1rem;
+        }
+        .big-spinner {
+            /* A larger version of the previous spinner */
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 59, 92, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 2s linear infinite; /* Slower, sadder spin rate */
+            margin-bottom: 1rem;
+        }
+        .map-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .sub-map-text {
+             font-size: 0.75rem;
+             font-style: italic;
+             margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -195,7 +231,13 @@
 
             <div class="card">
                 <h3>The Grand Canyon (Academic Block)</h3>
-                <p>Why walk on a paved road when you can hike? For the past six months, we have curated a massive hole and sand dunes on the path to the academic block. This daily trek builds character, tests your agility, and proves that our administration operates on geological time.</p>
+                <p>Why walk on a paved road when you can hike? For the past six months, we have curated a massive hole and sand dunes on the path to the academic block. This daily trek builds character and tests your agility.</p>
+                
+                <div class="map-placeholder">
+                    <div class="big-spinner"></div>
+                    <div class="map-text">Loading live view of construction pit...</div>
+                    <div class="sub-map-text">Estimated time remaining: 6-8 Months... maybe.</div>
+                </div>
             </div>
 
         </div>
