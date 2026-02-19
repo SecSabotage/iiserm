@@ -3,59 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology to Patsky</title>
+    <title>IISER Mohali | Pioneer in Disconnection</title>
     <style>
+        /* Academic, clean, and "official" CSS styling */
+        :root {
+            --primary-blue: #003b5c;
+            --accent-gold: #d4af37;
+            --bg-light: #f4f7f6;
+            --text-dark: #333333;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fce4ec; /* Soft pink background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(0, 59, 92, 0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         .card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,59,92,0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        footer {
+            background-color: #222;
+            color: #888;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
+            padding: 2rem;
+            font-size: 0.9rem;
         }
-        h1 {
-            color: #ff4757;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        p {
-            color: #2f3542;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        .gif-container img {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-        .emoji {
-            font-size: 3rem;
+        .tiny-text {
+            font-size: 0.7rem;
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="emoji">🍿🍿🍿</div>
-        <h1>lol sorry Patsky</h1>
-        <p>(For missing out on our binge)</p>
-        
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpbmZ6bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif" alt="Cute Cat Apology">
-        </div>
+    <header>
+        <div class="logo-text">IISER Mohali <span style="font-size: 0.8rem; font-weight: normal;">*</span></div>
+        <nav>
+            <span style="color: #ccc;">Research | Admissions | Endless Buffering</span>
+        </nav>
+    </header>
 
-        <p style="font-size: 0.9rem; color: #747d8c; margin-top: 1.5rem;">I'll give u 1 kitkat btw :o</p>
+    <section class="hero">
+        <h1>Excellence in Isolation</h1>
+        <p>Welcome to a premier research institute where we take focus so seriously, we physically and digitally cut you off from the outside world. Experience the thrill of 1998 dial-up speeds and daily obstacle courses.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">World-Class Infrastructure</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <h3>The Hostel LAN Illusion</h3>
+                <p>Equipped in every room is a state-of-the-art Ethernet port. Scientists have theorized that if you plug a cable into it, the universe might collapse. We don't want to risk it, so we've ensured they remain entirely non-functional.</p>
+            </div>
+
+            <div class="card">
+                <h3>Campus Wi-Fi <div class="spinner"></div></h3>
+                <p>Our institute Wi-Fi is designed to teach patience. Whether you are downloading a crucial 2MB research paper or simply trying to send a WhatsApp message, our network guarantees you'll have plenty of time to rethink your life choices while it loads.</p>
+            </div>
+
+            <div class="card">
+                <h3>Faraday Cage Architecture</h3>
+                <p>Think your personal mobile data will save you? Think again. We have strategically constructed our campus to block major ISPs, ensuring a sparse, patchy cellular experience that perfectly simulates a survival expedition.</p>
+            </div>
+
+            <div class="card">
+                <h3>The Grand Canyon (Academic Block)</h3>
+                <p>Why walk on a paved road when you can hike? For the past six months, we have curated a massive hole and sand dunes on the path to the academic block. This daily trek builds character, tests your agility, and proves that our administration operates on geological time.</p>
+            </div>
+
+        </div>
     </div>
+
+    <footer>
+        <p>In Pursuit of Knowledge (If the page ever loads)</p>
+        <p class="tiny-text">parody.</p>
+    </footer>
 
 </body>
 </html>
