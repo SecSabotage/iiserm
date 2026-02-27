@@ -306,7 +306,67 @@
         audio::-webkit-media-controls-panel {
             background-color: #f4f7f6;
         }
-        
+
+
+        /* Official Transcript / Lyrics Button */
+        .transcript-btn {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        .transcript-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* The Lyrics Modal */
+        .lyrics-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2.5rem;
+            border-top: 5px solid var(--primary-blue);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            z-index: 1001; /* Higher than the 504 error */
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .lyrics-modal h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .lyrics-content {
+            white-space: pre-line; /* Keeps your line breaks for the song */
+            font-family: 'Courier New', Courier, monospace; /* Typewriter font for that official document feel */
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .close-lyrics-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
         
     </style>
 </head>
@@ -330,18 +390,9 @@
         <h1>Excellence in Isolation</h1>
         <p>Welcome to a premier research institute where we take focus so seriously, we physically and digitally cut you off from the outside world. Experience the thrill of 1998 dial-up speeds and daily obstacle courses.</p>
     </section>
-<div class="audio-guide-container">
-        <div class="audio-header">
-            <span class="audio-icon">🎧</span>
-            <h4>Accessibility: Official Audio Descriptive Guide</h4>
-        </div>
-        <p class="audio-desc">For users experiencing degraded visual assets due to standard campus network throttling, please utilize this supplementary audio tour of our infrastructure.</p>
-        
-        <audio controls class="official-player">
-            <source src="iisermdiss.mp3" type="audio/mpeg">
-            Your browser does not support the audio element. (Just like our campus doesn't support the internet).
-        </audio>
-    </div>
+
+
+    
     <div class="container">
         <h2 class="section-title">World-Class Infrastructure</h2>
         <div class="grid">
@@ -400,6 +451,130 @@
         </div>
     </div>
 
+    <div class="audio-guide-container">
+        <div class="audio-header">
+            <span class="audio-icon">🎧</span>
+            <h4>Accessibility: Official Audio Descriptive Guide</h4>
+        </div>
+        <p class="audio-desc">For users experiencing degraded visual assets due to standard campus network throttling, please utilize this supplementary audio tour.</p>
+        
+        <audio controls class="official-player">
+            <source src="iisermdiss.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <button class="transcript-btn" onclick="openLyrics()">📄 View Official Transcript</button>
+    </div>
+
+
+    <div class="lyrics-modal" id="lyricsModal">
+        <h3>Official Infrastructure Anthem - Transcript</h3>
+        <div class="lyrics-content">
+            [Intro]
+Welcome to IISER Mohali
+Population: suffering
+Roll call?
+Trauma present
+
+[Verse 1]
+CCTV on the ceiling
+CCTV in my head
+Even when I’m taking notes
+Bro
+I’m taking them in dread
+Hostel warden got the footage
+Of my existential walk
+"Why you breathing after hours?"
+Man
+They filing that in stock
+Slow Wi‑Fi
+One mail loads
+Before next mid‑sem arrives
+By the time the page refreshes
+My GPA flatlines
+Spam from admin in my inbox
+Every minute
+New decree
+"Read carefully
+Very urgent"
+Copy‑paste bureaucracy
+
+[Chorus]
+This ain’t campus
+It’s a circus
+It’s a live drill
+Every corridor confession under silent kill
+"Dear student" in my inbox like a jump scare
+IISER Mohali
+How you make pain look so well‑planned
+So fair?
+Attendance on my neck like a dog chain
+One missed class
+Whole system screaming my name
+You call it science
+I call it organized stress
+Welcome to the institute of Infinite Email Regret
+
+[Verse 2]
+Mess food mystery
+Guess the dish
+Stomach doing quantum flips
+Chapati like a lab report
+Dry
+Unfinished
+Full of scripts
+"Balanced diet" on the notice
+Plate says "good luck
+Stay alive"
+Curry tastes like it was cooked
+Before this campus was contrived
+Late‑night corridor patrol
+"Lights off! Silence! Go to bed!"
+I’m just standing with my sorrows
+They already live in my head
+Exams lined like firing squad
+One by one they take their shot
+MCQ or execution?
+Either way
+I’m getting got
+
+[Chorus]
+
+[Verse 3]
+Adrene Freeda D’Cruz with the mail gun
+Every hour
+New command
+That’s a nail done
+"Read the rules
+Fill the form
+Follow protocol"
+Ma’am
+I’d love to
+But the Wi‑Fi finna stall
+Anil Kumar Tripathi in the big chair
+Campus burning
+But the mail tone stays real fair
+"Dear all" like a sermon from the high throne
+Meanwhile we fighting for a socket and a quiet phone
+Hostel rules like a holy text
+Interpretation: always vexed
+They say "holistic education"
+I say "sleep deprivation test"
+[Bridge]
+Endless emails
+Endless fear
+Every ping
+Another tear
+Every "regarding"
+Another "kindly"
+Another "strictly"
+Sincerely
+Blindly
+
+[Chorus]
+        </div>
+        <button class="close-lyrics-btn" onclick="closeLyrics()">Acknowledge & Close</button>
+    </div>
     
 <div class="grievance-section">
         <h2 style="color: #d9534f; margin-top: 0;">Official Grievance Redressal</h2>
@@ -437,6 +612,9 @@
             if (Math.random() < 0.25) {
                 document.getElementById('overlay').style.display = 'block';
                 document.getElementById('fakeAlert').style.display = 'block';
+
+            // Don't trigger if they are clicking buttons, the fake alert, or the lyrics modal
+            if (e.target.tagName === 'BUTTON' || e.target.closest('.fake-alert') || e.target.closest('.lyrics-modal') || e.target.classList.contains('official-player')) return;
             }
         });
 
@@ -467,7 +645,16 @@
                 message.style.display = 'block';
             }, 1200); // 1.2 seconds matches the CSS animation duration
         }
+// Open and Close Lyrics Modal
+        function openLyrics() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('lyricsModal').style.display = 'block';
+        }
 
+        function closeLyrics() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('lyricsModal').style.display = 'none';
+        }
     </script>
 
     
