@@ -3,95 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL // ACCESS GRANTED</title>
+    <title>V_LAB :: ANOMALY_REPORT</title>
     <style>
-        /* Dark Web / Terminal Aesthetic */
-        body {
-            background-color: #0a0a0a;
-            color: #00ff41;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
+        /* BASE STYLES & PURE BLACK BACKGROUND */
+        :root {
+            --cyan: #00f3ff;
+            --red: #ff003c;
+            --green: #00ff41;
+            --bg-black: #000000;
+            --glass-border: rgba(0, 243, 255, 0.15);
+            --glass-bg: rgba(5, 15, 25, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            text-shadow: 0 0 5px #00ff41;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        .container {
-            border: 1px solid #00ff41;
-            padding: 25px;
-            max-width: 700px;
-            width: 100%;
-            background: rgba(0, 255, 65, 0.05);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-            position: relative;
-        }
-        .header {
-            border-bottom: 2px solid #00ff41;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            font-weight: bold;
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-weight: normal;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-        .log-entry {
-            margin: 20px 0;
-            padding: 12px;
-            border-left: 3px solid #ff4757;
-            background: rgba(255, 71, 87, 0.05);
-        }
-        .redacted {
-            background-color: #00ff41;
-            color: #0a0a0a;
-            padding: 0 5px;
-            font-weight: bold;
-        }
-        .blink { animation: blinker 1s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
+
+        .text-cyan { color: var(--cyan); text-shadow: 0 0 8px rgba(0, 243, 255, 0.4); }
+        .text-red { color: var(--red); text-shadow: 0 0 8px rgba(255, 0, 60, 0.4); }
+        .text-green { color: var(--green); text-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }
         
-        /* Scanline effect */
-        .container::before {
-            content: " ";
-            display: block;
+        /* LIQUID GLASS EFFECT */
+        .liquid-glass {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .liquid-glass:hover {
+            border-color: rgba(0, 243, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 243, 255, 0.1), inset 0 0 30px rgba(0, 243, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* LIQUID SHINE ANIMATION */
+        .liquid-glass::before {
+            content: '';
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
+            top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(0, 243, 255, 0.15), transparent);
+            transform: skewX(-25deg);
+            animation: shine 7s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -150%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* LAYOUT CONTAINERS */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #a0aab5;
+        }
+        .blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* CHESS LAYOUT (CASE STUDIES) */
+        .chess-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+        .chess-row.reverse {
+            flex-direction: row-reverse;
+        }
+        .chess-content, .chess-visual {
+            flex: 1;
+        }
+        .chess-visual {
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        .chess-visual svg {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            filter: drop-shadow(0 0 10px var(--cyan));
+        }
+        .chess-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* 4-CARD GRID (FEATURES) */
+        .grid-section {
+            margin: 100px 0;
+        }
+        .grid-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            padding: 30px;
+            height: 100%;
+        }
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--cyan);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 1px dotted var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        /* STATS SECTION */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .stat-item {
+            margin: 20px;
+            min-width: 200px;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: #a0aab5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 80px;
+            font-size: 0.9rem;
+            color: #556;
+            letter-spacing: 2px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .chess-row, .chess-row.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 { font-size: 2rem; }
+            .stat-number { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1 class="text-cyan">V_LAB // ANOMALY_REPORT</h1>
+        <p style="margin-bottom: 20px; font-weight: bold;" class="text-red blink">SYSTEM_STATUS: [CRITICAL]</p>
+        <p>Lab data integrity compromised. Repeated anomalies detected in V-Class lab operations. System audit and root-cause analysis commenced. Subject 'V' flagged for over-engineering non-critical environments.</p>
+    </section>
+
     <div class="container">
-        <div class="header">
-            > INTERNAL_SERVER_LEAK // SUBJECT: V. <span class="blink">_</span>
-        </div>
         
-        <p>[!] ENCRYPTION BYPASSED. ACCESSING LAB_REPORTS_DIR...</p>
-        
-        <div class="log-entry">
-            <strong>[LOG_V-01]:</strong> Subject V continues to treat the lab like a Clean Room. Refuses to accept that reality has a &plusmn; error margin.
+        <!-- CASE STUDY 1: Text Left, Image Right -->
+        <div class="chess-row">
+            <div class="chess-content">
+                <h2 class="text-cyan">Case Study: The Room Temp Deviation</h2>
+                <p>An extensive audit of recent experimental data revealed a catastrophic system halt. Root cause? The environmental variable `room_temp` was logged as <strong>20&deg;C</strong> instead of the mandated <strong>20.0000&deg;C</strong>.</p>
+                <br>
+                <p>Subject V initiated a full protocol wipe, forcing a 3-hour repetition of the thermodynamic sequence. Conclusion: Subject operates under the illusion that an unsealed lab functions as a perfect vacuum at Standard Temperature and Pressure.</p>
+            </div>
+            <div class="chess-visual liquid-glass">
+                <!-- Abstract glowing graph SVG -->
+                <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10,100 L40,95 L70,110 L100,20 L130,90 L160,85 L190,95" fill="none" stroke="var(--cyan)" stroke-width="3" />
+                    <circle cx="100" cy="20" r="5" fill="var(--red)" />
+                    <text x="110" y="25" fill="var(--red)" font-family="monospace" font-size="10">ERR: 20.0000</text>
+                    <line x1="10" y1="120" x2="190" y2="120" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                </svg>
+            </div>
         </div>
 
-        <div class="log-entry">
-            <strong>[LOG_V-02]:</strong> "The Room Temp Incident." Entire squad forced to repeat. Subject claimed <span class="redacted">20&deg;C</span> was "fiction." Demanded a 4-decimal place reading for a basic experiment.
+        <!-- CASE STUDY 2: Image Left, Text Right -->
+        <div class="chess-row reverse">
+            <div class="chess-content">
+                <h2 class="text-cyan">System Bug: The Micrometer Obsession</h2>
+                <p>Data suggests Subject V regularly utilizes a 0.0001mm micrometer to measure non-essential variables. This level of rigidity in a Tier-1 academic lab setting indicates a critical processing error in risk assessment.</p>
+                <br>
+                <p>While the rest of the node network was processing the <em>Octree Data Structure</em>, Subject V was busy calibrating the zero-error of a device that hasn't changed since 1998.</p>
+            </div>
+            <div class="chess-visual liquid-glass">
+                <!-- Abstract Target/Precision SVG -->
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0, 243, 255, 0.2)" stroke-width="2" />
+                    <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(0, 243, 255, 0.5)" stroke-width="2" />
+                    <circle cx="100" cy="100" r="20" fill="none" stroke="var(--cyan)" stroke-width="2" />
+                    <line x1="20" y1="100" x2="180" y2="100" stroke="var(--cyan)" stroke-width="1" opacity="0.7"/>
+                    <line x1="100" y1="20" x2="100" y2="180" stroke="var(--cyan)" stroke-width="1" opacity="0.7"/>
+                    <circle cx="103" cy="97" r="4" fill="var(--red)" />
+                </svg>
+            </div>
         </div>
 
-        <div class="log-entry">
-            <strong>[LOG_V-03]:</strong> Rumor: Subject calibrates his bathroom scale every morning using a 10kg standard weight. Peak perfectionist behavior detected.
+        <!-- FEATURES / LOGS (4 Cards) -->
+        <div class="grid-section">
+            <h2 class="text-cyan">DECRYPTED_SYSTEM_LOGS</h2>
+            <div class="grid-container">
+                
+                <div class="card liquid-glass">
+                    <div class="card-icon">🌡️</div>
+                    <h3 class="text-red">TEMP_ERROR_LOG</h3>
+                    <p>Experiment: Thermal Expansion.<br>Status: FAILED.<br>Reason: Tolerance threshold exceeded. 20 != 20.0000. Repeat mandated by Subject V.</p>
+                </div>
+
+                <div class="card liquid-glass">
+                    <div class="card-icon">⚙️</div>
+                    <h3 class="text-cyan">CALIBRATION_FAULT</h3>
+                    <p>Repeated calibration cycles mandated for all equipment, even during idle periods. Waste of system resources and developer time. Root cause: Extreme risk aversion.</p>
+                </div>
+
+                <div class="card liquid-glass">
+                    <div class="card-icon">💬</div>
+                    <h3 class="text-green">ANON_SOURCE_74</h3>
+                    <p>"Bro, I thought this was a basic physics lab, not a mission to calibrate the Large Hadron Collider. Let me go home and code."</p>
+                </div>
+
+                <div class="card liquid-glass">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="text-cyan">PROJECT_BETA</h3>
+                    <p>Current active module: <strong class="text-cyan">Electrodynamics</strong>. Simulation loaded. Awaiting Subject V to complain about magnetic field line rendering thickness.</p>
+                </div>
+
+            </div>
         </div>
 
-        <div class="log-entry" style="border-left-color: #00ff41; background: rgba(0, 255, 65, 0.05);">
-            <strong>[DECRYPTED_MSG]:</strong> "Bro, it's just physics lab, not the CERN Hadron Collider. Let us go home."
+        <!-- STATS SECTION -->
+        <div class="stats-container liquid-glass">
+            <div class="stat-item">
+                <div class="stat-number text-red">48</div>
+                <div class="stat-label">Hours Wasted on Repeats</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number text-cyan">99.999%</div>
+                <div class="stat-label">Precision Demanded</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number text-green">0.0%</div>
+                <div class="stat-label">Instructor Satisfaction</div>
+            </div>
         </div>
 
-        <footer style="margin-top: 40px; font-size: 0.75rem; color: #444; text-align: center;">
-            // TRACE_CLEARED // ELECTRODYNAMICS_LOADED // PACKET_SENT //
-        </footer>
     </div>
+
+    <footer>
+        <span class="text-cyan">//</span> TRACE_CLEARED <span class="text-cyan">//</span> ELECTRODYNAMICS_LOADED <span class="text-cyan">//</span> PACKET_SENT <span class="text-cyan">//</span>
+    </footer>
 
 </body>
 </html>
