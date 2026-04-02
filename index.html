@@ -367,6 +367,38 @@
             cursor: pointer;
             float: right;
         }
+
+
+        /* Breaking News Banner Styling */
+        .news-flash-banner {
+            background-color: #d9534f;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 998; /* Just below the error pop-ups */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: pulseAlert 2s infinite;
+            font-size: 1.1rem;
+        }
+        .news-flash-banner a {
+            color: #ffeb3b; /* Urgent yellow link */
+            text-decoration: underline;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 10px;
+            transition: color 0.2s;
+        }
+        .news-flash-banner a:hover {
+            color: white;
+        }
+        @keyframes pulseAlert {
+            0% { background-color: #d9534f; }
+            50% { background-color: #b52b27; }
+            100% { background-color: #d9534f; }
+        }
         
     </style>
 </head>
@@ -378,6 +410,13 @@
         <p>Error 504: The campus router is currently taking a nap. Please wait 3 to 5 business days for the packet to be delivered via carrier pigeon.</p>
         <button onclick="closeAlert()">Diagnose Network (Fails)</button>
     </div>
+
+
+    <div class="news-flash-banner">
+        🚨 URGENT CAMPUS ADVISORY: 
+        <a href="bulletin1.html">Click here to view the latest administrative bulletin & disaster updates</a> 🚨
+    </div>
+
     
     <header>
         <div class="logo-text">IISER Mohali <span style="font-size: 0.8rem; font-weight: normal;">parody*</span></div>
