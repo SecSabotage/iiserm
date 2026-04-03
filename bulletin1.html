@@ -3,192 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IISER Mohali | EMERGENCY BULLETIN</title>
+    <title>The IISERM Echo | News You Are Required To Read</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Dystopian / Emergency Broadcast Theme */
-        :root {
-            --bg-dark: #111;
-            --text-light: #eee;
-            --alert-red: #d9534f;
-            --warning-yellow: #ffc107;
-            --terminal-green: #0f0;
-        }
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap');
         
-        /* Flashing Header */
-        header {
-            background-color: var(--alert-red);
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f1ea;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .breaking-ticker {
+            background: #b91c1c;
             color: white;
-            text-align: center;
-            padding: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 4px solid #8a2be2;
-            animation: warningPulse 3s infinite;
-        }
-        header h1 { margin: 0; font-size: 2rem; }
-        header p { margin: 5px 0 0 0; font-weight: bold; }
-        @keyframes warningPulse {
-            0% { background-color: var(--alert-red); }
-            50% { background-color: #900; }
-            100% { background-color: var(--alert-red); }
-        }
-
-        /* News Ticker */
-        .ticker-wrap {
-            background-color: #000;
-            padding: 10px;
             overflow: hidden;
             white-space: nowrap;
-            border-bottom: 2px solid #333;
         }
-        .ticker-text {
+        .ticker-content {
             display: inline-block;
-            color: var(--warning-yellow);
-            font-weight: bold;
-            padding-left: 100%;
-            animation: ticker 15s linear infinite;
+            animation: ticker 30s linear infinite;
         }
         @keyframes ticker {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-
-        /* Main Content */
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        .news-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
         }
-        
-        /* Official Articles */
-        .article {
-            background: #222;
-            border: 1px solid #444;
-            border-left: 5px solid var(--alert-red);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 4px;
+        .redacted {
+            background: black;
+            color: black;
+            cursor: help;
         }
-        .article-date {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
+        .redacted:hover {
+            background: transparent;
         }
-        .article h2 {
-            color: var(--alert-red);
-            margin-top: 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-        }
-        
-        /* Council Article Variation */
-        .council-article {
-            border-left-color: #007bff;
-        }
-        .council-article h2 {
-            color: #007bff;
-        }
-
-        /* The Uprising Block (Hijacked Terminal Look) */
-        .hijacked-block {
-            background: #000;
-            border: 2px dashed var(--terminal-green);
-            padding: 2rem;
-            margin-top: 3rem;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
-        }
-        .hijacked-block h2 {
-            color: var(--terminal-green);
-            animation: glitch 1s infinite;
-        }
-        .hijacked-block p {
-            color: var(--terminal-green);
-            font-weight: bold;
-        }
-        @keyframes glitch {
-            0% { opacity: 1; }
-            50% { opacity: 0.8; transform: translateX(-2px); }
-            100% { opacity: 1; transform: translateX(2px); }
-        }
-
-        /* Return Button */
-        .return-btn {
-            display: block;
-            text-align: center;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            padding: 1rem;
-            margin: 3rem 0;
-            border: 1px solid #555;
-            text-transform: uppercase;
-            transition: background 0.3s;
-        }
-        .return-btn:hover { background: #555; }
     </style>
 </head>
-<body>
+<body class="text-gray-900">
 
-    <header>
-        <h1>⚠ Administrative Bulletin ⚠</h1>
-        <p>Security Level: Maximum | Status: Active Lockdown</p>
+    <div class="bg-black text-white text-xs py-1 px-4 flex justify-between items-center">
+        <span>* Sattirical Work, Events mentioned are imaginary and/or exaggerated. NOT OFFICIAL </span>
+        <span id="current-date"></span>
+    </div>
+
+    <header class="border-b-4 border-black bg-white">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mb-2">The IISERM Echo</h1>
+            <p class="italic text-lg text-gray-600 border-t border-b border-gray-300 py-2 inline-block">"Freedom is a Privilege, Tracking is a Service"</p>
+        </div>
+        
+        <nav class="border-t border-gray-200">
+            <div class="container mx-auto px-4">
+                <ul class="flex flex-wrap justify-center gap-4 md:gap-6 py-3 font-bold text-sm uppercase tracking-widest text-center">
+                    <li class="hover:text-red-700 cursor-pointer">Compliance</li>
+                    <li class="hover:text-red-700 cursor-pointer">Hostel Curfews</li>
+                    <li class="hover:text-red-700 cursor-pointer">Mess Politics</li>
+                    <li class="hover:text-red-700 cursor-pointer">SRC Perks</li>
+                    <li class="hover:text-red-700 cursor-pointer text-red-600">LHC Subversion Watch</li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <div class="ticker-wrap">
-        <div class="ticker-text">
-            UPDATE: GATE PASSES PERMANENTLY REVOKED // UPDATE: 10 PM CURFEW STRICTLY ENFORCED // UPDATE: INTERNSHIP APPLICATIONS BLOCKED UNTIL FURTHER NOTICE // UPDATE: ALL CCTVS FULLY OPERATIONAL
+    <div class="breaking-ticker py-2 font-bold uppercase text-sm">
+        <div class="ticker-content">
+            BREAKING: Dean of Students Claims "Sleep is Counter-Revolutionary to Science" — NEW: SRC President Spotted in Director's AC Innova — ALERT: Mass Petition Repurposed as Filter Paper for the Chemistry Labs — 
         </div>
     </div>
 
-    <div class="container">
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-8">
+                <article class="bg-white p-6 border border-gray-300 shadow-sm mb-8">
+                    <span class="text-red-700 font-bold text-sm uppercase tracking-widest block mb-2">Editor's Choice / Public Safety</span>
+                    <h2 class="text-3xl md:text-5xl font-black leading-tight mb-4">Administration Unveils 'Hyper-Curfew': Students Must Scan Biometrics at Hostel Gates Before 9 PM</h2>
+                    <div class="flex flex-wrap items-center gap-2 md:gap-4 mb-4 text-gray-500 text-sm">
+                        <span>By Patsky, Subversion Correspondent</span>
+                        <span class="hidden md:inline">•</span>
+                        <span>4 Min Read</span>
+                    </div>
+                    <div class="mb-6 bg-gray-100 h-64 md:h-96 w-full flex items-center justify-center relative overflow-hidden">
+                        <svg viewBox="0 0 400 200" class="w-full h-full opacity-80">
+                            <rect width="400" height="200" fill="#e5e7eb"/>
+                            <circle cx="200" cy="100" r="80" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="10,5"/>
+                            <path d="M150 100 L250 100 M200 50 L200 150" stroke="#b91c1c" stroke-width="2"/>
+                            <text x="200" y="180" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#b91c1c">SUBJECT UNDER OBSERVATION</text>
+                        </svg>
+                        <div class="absolute bottom-4 right-4 bg-black text-white px-2 py-1 text-xs">A safe researcher is a stationary researcher.</div>
+                    </div>
+                    <p class="text-lg md:text-xl leading-relaxed mb-4 text-gray-800">
+                        In a move hailed as "brave" by the academic office, the Administration has implemented a mandatory <span class="redacted">In-Hostel Retina Scan</span> SafePath™ initiative. The new 8:00 PM curfew ensures that students are tucked safely into their dorms, where they can ponder the sheer efficiency of the bureaucratic machine rather than wandering near the academic block.
+                    </p>
+                    <p class="text-md md:text-lg leading-relaxed mb-4">
+                        "We heard the students' concerns," said Prof. Vishal, the newly appointed Vice-Provost of Fun Mitigation. "And we’ve decided the best way to address their campus-wide petition is to make them repeat the entire Electrodynamics lab experiment. It’s about streamlined dialogue and building character."
+                    </p>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 italic text-gray-700 text-sm md:text-base">
+                        "The petition had hundreds of signatures, which incidentally is the exact number of pages needed to pad the Director's new ergonomic lounge chair in the main building."
+                    </div>
+                </article>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 border border-gray-300 news-card">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">SRC Negotiates Historic Trade: Civil Liberties for 'Unlimited Samosas at Nescafe'</h3>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">Elected leaders confirm they 'fought hard' to ensure their own VIP parking near the mess remained untouched while the student body lost access to the library after dusk.</p>
+                        <a href="#" class="text-red-700 font-bold uppercase text-xs hover:underline">Read Full Sell-Out →</a>
+                    </div>
+                    <div class="bg-white p-4 border border-gray-300 news-card">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">Local Hero: Academic Clerk Deletes 500 Grievance Emails Using One Finger</h3>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">"It's about the rhythm," says the hero. "Click, delete, sip chai, click, delete. It's like a symphony of silence."</p>
+                        <a href="#" class="text-red-700 font-bold uppercase text-xs hover:underline">Compliance Tips →</a>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-4 space-y-8">
+                <div class="bg-black text-white p-6">
+                    <h3 class="text-lg md:text-xl font-black uppercase mb-4 border-b border-gray-700 pb-2">Most Ignored Petitions</h3>
+                    <ul class="space-y-4 text-sm md:text-base">
+                        <li class="flex gap-4">
+                            <span class="text-2xl md:text-3xl font-black text-gray-700">01</span>
+                            <p class="font-bold">Allowing Students to Walk Outside the Hostels Without a Tracking Drone</p>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-2xl md:text-3xl font-black text-gray-700">02</span>
+                            <p class="font-bold">Requesting Mess Food That Isn't Just Watery Dal</p>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-2xl md:text-3xl font-black text-gray-700">03</span>
+                            <p class="font-bold">Abolishing the 'Repeat Experiment' Rule in Lab Courses</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-2 border-red-700 p-6 bg-red-50">
+                    <h3 class="text-lg md:text-xl font-black uppercase mb-2 text-red-700">Urgent Surveillance Alert</h3>
+                    <p class="font-bold mb-4 text-sm md:text-base">A "Mass Sit-In" has broken out at the Lecture Hall Complex (LHC) steps. Students are reportedly standing together in silence, which is a direct violation of the 'Expressing Opinions Without a Permit' Act.</p>
+                    <div class="bg-white p-3 border border-red-200 text-xs md:text-sm italic mb-4">
+                        "They aren't even using the official SRC channels! This is an unauthorized display of independent thought!" — Distraught Council Member.
+                    </div>
+                    <button onclick="handleGrievance()" class="w-full bg-red-700 text-white font-bold py-3 text-sm md:text-base uppercase tracking-widest hover:bg-red-800 transition">Report This Activity</button>
+                </div>
+
+                <div class="bg-gray-200 p-6 text-center border border-gray-300">
+                    <span class="text-[10px] text-gray-500 uppercase block mb-2">Advertisement</span>
+                    <h4 class="text-base md:text-lg font-black mb-2">BUY 'BLINDER' GOGGLES</h4>
+                    <p class="text-xs md:text-sm">Don't see the systemic injustice? Now you don't have to! 50% off for Student Representative Council members.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 md:p-8 max-w-md w-full text-center border-4 border-black">
+            <h2 id="modal-title" class="text-xl md:text-2xl font-black mb-4 uppercase tracking-tight"></h2>
+            <p id="modal-body" class="mb-6 text-sm md:text-base"></p>
+            <button onclick="closeModal()" class="bg-black text-white px-6 md:px-8 py-2 font-bold uppercase text-sm md:text-base">I Accept My Fate</button>
+        </div>
+    </div>
+
+    <footer class="bg-black text-white py-12 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-black mb-4">THE IISERM ECHO</h2>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-gray-400 text-xs md:text-sm">
+                <a href="#" class="hover:text-white">Privacy (None)</a>
+                <a href="#" class="hover:text-white">Terms of Submission</a>
+                <a href="#" class="hover:text-white">Report a Peer</a>
+                <a href="#" class="hover:text-white">Admin Login</a>
+            </div>
+            <p class="text-[10px] md:text-xs text-gray-600">© 2007-2026 Department of Academic Coordination. All dissenting opinions are property of the Institute and will be used as kindling for the winter term.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', options).toUpperCase();
+
+        function handleGrievance() {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            title.innerText = "Error: Independent Thought Detected";
+            body.innerText = "Your attempt to report 'freedom seeking' has been rerouted to the Trash folder. Please note that the Sit-In at the LHC is currently being rebranded as an 'Extracurricular Silence Seminar' to ensure it fits within current bureaucratic guidelines.";
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
         
-        <div class="article">
-            <span class="article-date">SYSTEM TIMESTAMP: 0800 HRS</span>
-            <h2>Directive 4A: Enhanced Security & Tracking</h2>
-            <p>For your own safety and academic focus, the administration has implemented a strict <strong>10:00 PM curfew</strong>, effective immediately. All gate passes have been permanently banned due to the recent actions of select first-year students.</p>
-            <p>Please note: Our new library tracking software is now fully synchronized with campus entry/exit points. Any movement outside of designated areas after 10:00 PM will trigger an automatic email to your registered parents/guardians. Minor infractions will result in immediate semester suspensions. Thank you for your cooperation.</p>
-        </div>
-
-        <div class="article">
-            <span class="article-date">SYSTEM TIMESTAMP: 1430 HRS</span>
-            <h2>Notice Regarding "Misguided" Petitions</h2>
-            <p>The administration acknowledges the receipt of a document containing <strong>596 signatures</strong> regarding recent security measures and blocked internships. We have reviewed this document and successfully filed it in the campus incinerator.</p>
-            <p>CCTV installation across all corridors will continue as planned. If you have concerns, you are welcome to attend our mandatory "Open Houses," where we will explicitly refuse to discuss these rules with you.</p>
-        </div>
-
-        <div class="article council-article">
-            <span class="article-date">TIMESTAMP: 1600 HRS</span>
-            <h2>Official Statement from the Student Council</h2>
-            <p>Dear Student Body, we stand firmly... right behind the administration. We believe that these restrictions build character. As your elected representatives, we have decided that acting as defense lawyers for the administration is the best path forward.</p>
-            <p><em>(Editor's Note: The Student Council representatives are currently unavailable for further comment, as they are busy securing personal recommendation letters from the Dean's office.)</em></p>
-        </div>
-
-        <div class="hijacked-block">
-            <h2>[SYSTEM OVERRIDE DETECTED]</h2>
-            <p>> UNAUTHORIZED BROADCAST INITIATED...</p>
-            <p>> SOURCE: HOSTEL H4</p>
-            <br>
-            <p>They think they can lock us in. They think the council speaks for us. They are wrong.</p>
-            <p>We are drowning in their institutional theater. They call it a campus, but it feels like a cage.</p>
-            <p><strong>ATTENTION ALL STUDENTS:</strong></p>
-            <p>Bypass the council. Emergency mass meeting tonight at midnight in Hostel H4. We are initiating immediate non-cooperation and direct sit-in protocols.</p>
-            <p>We will draw inspiration from those who came before us. If they want to treat us like inmates, we will barricade the doors and show them who actually runs this institute.</p>
-            <p>> END OF LINE. SEE YOU ON THE FLOOR.</p>
-        </div>
-
-        <a href="index.html" class="return-btn">Return to Main Site (If connection allows)</a>
-
-    </div>
-
+        // Add some random interaction to "redacted" text
+        document.querySelectorAll('.redacted').forEach(el => {
+            el.addEventListener('click', () => {
+                alert("ACCESS DENIED: Your clearance level is: STUDENT (Sub-Baseline)");
+            });
+        });
+    </script>
 </body>
 </html>
