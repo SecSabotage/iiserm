@@ -403,6 +403,8 @@
     </style>
 </head>
 <body>
+
+    <div id="popup-container"></div>
     
 <div class="overlay" id="overlay"></div>
     <div class="fake-alert" id="fakeAlert">
@@ -696,6 +698,30 @@ Blindly
         }
     </script>
 
+    <script>
+    // 1. Fetch the external HTML file and inject it
+    fetch('popup.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('popup-container').innerHTML = data;
+
+            // 2. Trigger a slight delay to allow the fade-in animation
+            setTimeout(() => {
+                const modal = document.getElementById('glossy-modal');
+                if(modal) modal.style.opacity = '1';
+            }, 100);
+        })
+        .catch(error => console.error('Error loading popup:', error));
+
+    // 3. The function to close the modal
+    function closeGlossyModal() {
+        const glossyModal = document.getElementById('glossy-modal');
+        glossyModal.style.opacity = '0'; // Fade out
+        setTimeout(() => {
+            glossyModal.style.display = 'none'; // Hide entirely revealing the index page
+        }, 500); 
+    }
+</script>
     
 </body>
 </html>
