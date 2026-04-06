@@ -184,24 +184,6 @@
 
     <script>
 
-    function closeGlossyModal() {
-        const glossyModal = document.getElementById('glossy-modal');
-        // Fade out
-        glossyModal.style.opacity = '0'; 
-        // Wait for the fade animation to finish, then hide it from the layout
-        setTimeout(() => {
-            glossyModal.style.display = 'none'; 
-        }, 500); 
-    }
-    
-    // Allows the user to click the blurred background to close the popup
-    document.getElementById('glossy-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeGlossyModal();
-        }
-    });
-
-
     
         // Set current date
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
