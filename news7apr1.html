@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The IISERM Echo | Live Protest Coverage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f1ea;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .breaking-ticker {
+            background: #b91c1c;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #b91c1c;
+            border: 3px solid #f4f1ea;
+        }
+        .redacted {
+            background: black;
+            color: black;
+            cursor: help;
+        }
+        .redacted:hover {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <div class="bg-black text-white text-xs py-1 px-4 flex justify-between items-center relative z-10">
+        <span>ESTABLISHED 2007 | NARRATIVE CONTROL DIVISION</span>
+        <span id="current-date"></span>
+    </div>
+
+    <header class="border-b-4 border-black bg-white relative z-10">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mb-2">The IISERM Echo</h1>
+            <p class="italic text-lg text-gray-600 border-t border-b border-gray-300 py-2 inline-block">"Freedom is a Privilege, Tracking is a Service"</p>
+        </div>
+        
+        <nav class="border-t border-gray-200">
+            <div class="container mx-auto px-4">
+                <ul class="flex flex-wrap justify-center gap-4 md:gap-6 py-3 font-bold text-sm uppercase tracking-widest text-center">
+                    <li class="hover:text-red-700 cursor-pointer text-red-600">Live: Campus Uprising</li>
+                    <li class="hover:text-red-700 cursor-pointer">Compliance Guidelines</li>
+                    <li class="hover:text-red-700 cursor-pointer">Gate Pass Denials</li>
+                    <li class="hover:text-red-700 cursor-pointer">SRC Status</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breaking-ticker py-2 font-bold uppercase text-sm relative z-10">
+        <div class="ticker-content">
+            BREAKING LIVE COVERAGE: Students form human chain blocking Faculty Residence road — UPDATE: Admin officials attempt escape through back doors — ALERT: Faculty member attempts to drive through protest line, injuries reported — MIDNIGHT UPDATE: Students march DSO back to residence area — 
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        
+        <div class="bg-black text-white p-8 mb-12 rounded-lg shadow-2xl relative overflow-hidden border-2 border-red-700">
+            <div class="absolute top-0 left-0 w-full h-1 bg-red-700 animate-pulse"></div>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-3 h-3 bg-red-600 rounded-full animate-ping"></div>
+                <span class="text-red-500 font-bold tracking-widest uppercase text-sm">Live Coverage</span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4 leading-tight">The 24-Hour Standoff: When the Lab Rats Bit Back</h2>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl">From a morning blockade at the Admin building to a midnight march tracking the Dean to his residence. A minute-by-minute breakdown of the day the administration lost control of Sector 81.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-8">
+                
+                <h3 class="text-3xl font-black border-b-2 border-black pb-2 mb-8 uppercase text-red-800">Timeline of Subversion</h3>
+                
+                <div class="relative border-l-4 border-gray-300 ml-4 md:ml-6 space-y-12 pb-8">
+                    
+                    <div class="relative pl-8 timeline-item">
+                        <span class="bg-black text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block">1:00 AM - 12:30 PM</span>
+                        <h4 class="text-2xl font-bold mb-3 text-gray-900">Phase 1: Mobilization & The Admin Standoff</h4>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">1:29 AM - 2:13 AM: Late-Night Logistics</strong>
+                            <p class="text-gray-700">In the early hours, organizers finalize tactics and exchange protest stickers. The primary strategy is solidified: physically block the entry and exit of the admin building by 9:00 AM to halt all bureaucratic functions.</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">9:43 AM - 11:10 AM: The Gathering</strong>
+                            <p class="text-gray-700">Organizers call for assembly at the Old Basketball (BB) Court. Initial numbers are low due to mandatory lab vivas trapping the MS24 and MS25 batches until noon. Placards are distributed among those present.</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm">
+                            <strong class="text-red-700 block mb-1">11:11 AM - 12:30 PM: March to Admin</strong>
+                            <p class="text-gray-700">The crowd moves to the Admin Block. The Director is spotted arriving at 11:17 AM. The Dean of Students (DSO, "Adrene") observes from a distance and dismisses the crowd as a "small fraction" of the 2,000-strong student body. This dismissal ignites anger, prompting urgent calls across hostel networks to abandon labs and prove their numbers.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 timeline-item">
+                        <span class="bg-black text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block">12:30 PM - 3:30 PM</span>
+                        <h4 class="text-2xl font-bold mb-3 text-gray-900">Phase 2: Closed Doors and Back Doors</h4>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">12:46 PM: Refusing the Divide</strong>
+                            <p class="text-gray-700">Administration attempts to split the protest by inviting only the SRC for a closed-door 1:00 PM meeting. The student body adamantly refuses, demanding open dialogue where the DSO addresses the entire crowd simultaneously.</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">12:50 PM - 1:20 PM: Weathering the Storm</strong>
+                            <p class="text-gray-700">Rain begins to fall. Organizers deploy chai and samosas to maintain morale. Wardens are sent to disperse the crowd, but students recognize the delay tactic and refuse to engage.</p>
+                        </div>
+
+                        <div class="bg-white p-5 border-l-4 border-l-red-600 shadow-md">
+                            <strong class="text-red-700 block mb-1">1:54 PM - 3:30 PM: The Back Door Escape</strong>
+                            <p class="text-gray-700">News breaks that the Director has left. At 2:24 PM, students realize the DSO has slipped out through the back door for lunch. Furious, students scramble to physically seal all rear exits. By 3:06 PM, the Dean of Academic Affairs (DAO) and the DSO are forced to re-enter through the back door, promising via security to finally meet students at 3:30 PM.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 timeline-item">
+                        <span class="bg-black text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block">3:30 PM - 6:30 PM</span>
+                        <h4 class="text-2xl font-bold mb-3 text-gray-900">Phase 3: The Faculty Blockade</h4>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">3:31 PM - 4:10 PM: Shifting the Chokehold</strong>
+                            <p class="text-gray-700">Tired of waiting, the protest escalates. The crowd marches away from the Admin Block to the Main Gate to disrupt broader campus traffic.</p>
+                        </div>
+
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">4:11 PM - 5:30 PM: The "Emergency" Irony</strong>
+                            <p class="text-gray-700">Students establish a human chain blocking the road near the Sports Complex—the sole route connecting the Faculty Residence to the campus. Faculty members attempt to drive through, citing various "emergencies." Students heavily mock this hypocrisy, noting the protest began because the administration ignored genuine student medical emergencies. They refuse passage without a "written gate pass from the DSO."</p>
+                        </div>
+
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm">
+                            <strong class="text-red-700 block mb-1">6:10 PM: Demanding Resignations</strong>
+                            <p class="text-gray-700">After nearly eight hours in the rain, demands expand. Beyond policy reversals, the crowd begins calling for the resignation of the entire DSO office for exhibiting "zero humanity."</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 timeline-item">
+                        <span class="bg-red-700 text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block animate-pulse">6:39 PM - 8:00 PM</span>
+                        <h4 class="text-2xl font-bold mb-3 text-gray-900 text-red-800">Phase 4: The Car Incident</h4>
+                        
+                        <div class="bg-red-50 p-5 border-2 border-red-700 shadow-lg mb-4">
+                            <strong class="text-red-900 block mb-1 text-lg">6:39 PM - 6:45 PM: The Breaking Point</strong>
+                            <p class="text-gray-900 font-semibold mb-2">The situation turns physically dangerous. A professor from the Math department attempts to drive his car directly through the student blockade at the Sports Complex. He allegedly runs his vehicle over the feet of four students.</p>
+                            <p class="text-gray-800 text-sm italic">"He won't say sorry unless a student actually has a broken leg," the professor allegedly stated during the ensuing standoff.</p>
+                        </div>
+
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">6:50 PM - 7:40 PM: The Standoff</strong>
+                            <p class="text-gray-700">Students swarm the vehicle, holding it in place. The DSO arrives at the scene at 6:50 PM to manage the escalating chaos.</p>
+                        </div>
+
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm">
+                            <strong class="text-red-700 block mb-1">7:18 PM - 8:00 PM: Debate Over Media</strong>
+                            <p class="text-gray-700">Discussions erupt in group chats about calling the police or external media. Student leaders advise caution, prioritizing the security of their 14 core demands before pursuing police involvement or resignations, fearing external media might twist the narrative.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 timeline-item">
+                        <span class="bg-black text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block">8:43 PM - MIDNIGHT</span>
+                        <h4 class="text-2xl font-bold mb-3 text-gray-900">Phase 5: The H3 Negotiations & Midnight March</h4>
+                        
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">8:43 PM - 10:40 PM: The H3 Meeting</strong>
+                            <p class="text-gray-700">The DSO agrees to talk; the crowd moves to the H3 Hostel Lobby. The meeting devolves into circular arguments. Students report the DSO using "manipulation games," cherry-picking issues, and providing hypotheticals rather than committing to concrete policy changes.</p>
+                        </div>
+
+                        <div class="bg-white p-5 border border-gray-200 shadow-sm mb-4">
+                            <strong class="text-red-700 block mb-1">10:41 PM: Lifting the Blockade</strong>
+                            <p class="text-gray-700">As a show of good faith, the SRC requests students clear the physical blockade at the Sports Complex stadium.</p>
+                        </div>
+
+                        <div class="bg-black text-white p-6 shadow-xl rounded-lg">
+                            <strong class="text-red-400 block mb-2 text-lg">10:49 PM - 11:59 PM: The Midnight March</strong>
+                            <p class="text-gray-300 font-medium leading-relaxed">The good faith does not pay off. The DSO refuses to yield on the core issues of the Entry/Exit register and Gate Passes. Realizing the discussion is a dead end, students decide they will not let the DSO leave peacefully. At 11:13 PM, they begin marching directly behind the DSO and other officials, following them out of the hostel and tracking them all the way back to the Faculty Residence Area.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <aside class="lg:col-span-4 space-y-8">
+                
+                <div class="bg-gray-100 p-6 border-t-4 border-black">
+                    <h3 class="text-xl font-black uppercase mb-4 text-gray-900">Administration Delay Tactics Logged</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-600 mt-1"></i>
+                            <p><strong>Dismissal of Numbers:</strong> Claiming the crowd is merely a "small fraction" of the student body.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-600 mt-1"></i>
+                            <p><strong>Divide and Conquer:</strong> Attempting to invite only the SRC for closed-door meetings.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-600 mt-1"></i>
+                            <p><strong>The "Back Door":</strong> Officials physically slipping out rear exits during designated meeting times.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-600 mt-1"></i>
+                            <p><strong>Circular Negotiation:</strong> Utilizing hypothetical examples to avoid committing to policy changes during the H3 meeting.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-2 border-red-700 p-6 bg-red-50 text-center">
+                    <i class="fas fa-bullhorn text-4xl text-red-700 mb-4 block"></i>
+                    <h3 class="text-lg font-black uppercase mb-2 text-red-800">Hypocrisy Watch</h3>
+                    <p class="text-sm font-bold text-gray-800 mb-4">Faculty caught in the blockade cited "emergencies" to bypass students. Students demanded written gate passes—mirroring the exact restrictive policies the administration forces upon the student body for medical emergencies.</p>
+                </div>
+
+                <div class="bg-white p-6 text-center border border-gray-300">
+                    <span class="text-[10px] text-gray-500 uppercase block mb-2">Advertisement</span>
+                    <h4 class="text-base font-black mb-2 uppercase tracking-wide">Need an Escape Route?</h4>
+                    <p class="text-xs text-gray-600 mb-3">Download the "Back Door Mapper" app. Perfect for Deans avoiding 1,000 angry students.</p>
+                    <button class="bg-black text-white text-xs font-bold py-2 px-4 uppercase hover:bg-gray-800">Download Now</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white py-12 mt-12 relative z-10">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-black mb-4">THE IISERM ECHO</h2>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-gray-400 text-xs md:text-sm">
+                <a href="#" class="hover:text-white">Privacy (None)</a>
+                <a href="#" class="hover:text-white">Terms of Submission</a>
+                <a href="#" class="hover:text-white">Report a Peer</a>
+                <a href="#" class="hover:text-white">Admin Login</a>
+            </div>
+            <p class="text-[10px] md:text-xs text-gray-600">© 2007-2026 Department of Academic Coordination. All dissenting opinions are property of the Institute and will be used to justify further semester suspensions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', options).toUpperCase();
+        
+        // Add random interaction to redacted text
+        document.querySelectorAll('.redacted').forEach(el => {
+            el.addEventListener('click', () => {
+                alert("ACCESS DENIED: Your clearance level is: STUDENT (Sub-Baseline)");
+            });
+        });
+    </script>
+</body>
+</html>

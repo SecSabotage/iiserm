@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The IISERM Echo | Breaking Protest Coverage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f0ede6;
+            color: #111827;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        .ticker-wrap {
+            background: #991b1b;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            height: 2.5rem;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 40s linear infinite;
+            padding-left: 100%;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .news-border {
+            border: 1px solid #d1d5db;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.9);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-border:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.9);
+        }
+        /* Custom scrollbar for the popup */
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-900 selection:text-white">
+
+    <div id="glossy-modal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity duration-500 p-4">
+        <div class="relative w-full max-w-lg p-8 overflow-hidden rounded-xl border border-white/30 bg-gray-900/80 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-blur-xl text-gray-100">
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+            
+            <button onclick="closeGlossyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-20 cursor-pointer">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="relative z-10 text-center mt-2">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-900/50 text-red-400 mb-4 border border-red-500/30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h2 class="text-3xl font-black mb-2 uppercase tracking-tight text-white">Faculty Emergency Declaration</h2>
+                <p class="mb-4 font-bold text-md text-red-300">Are you trapped on the Sports Complex road?</p>
+                <p class="text-sm mb-6 text-gray-300 leading-relaxed">
+                    To pass the student blockade, you must now submit a written Gate Pass detailing your "emergency." Note: Chronic administrative apathy is no longer a valid excuse for running over student feet. Apologies require visual proof of a broken leg.
+                </p>
+                <button onclick="closeGlossyModal()" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded border border-white/30 uppercase tracking-widest transition-all">
+                    I Will Wait In My Car
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-black text-white text-[10px] md:text-xs py-1 px-4 flex justify-between items-center uppercase font-bold tracking-wider">
+        <span>NARRATIVE CONTROL DIVISION | SAS NAGAR, PUNJAB</span>
+        <span>Wednesday, April 8, 2026</span>
+    </div>
+
+    <header class="border-b-4 border-black bg-white pt-10 pb-6">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter mb-2">The IISERM Echo</h1>
+            <p class="italic text-lg md:text-xl text-gray-700 border-y border-gray-400 py-2 inline-block px-8">"Providing Hypothetical Examples to Real-World Crises Since 2007"</p>
+        </div>
+    </header>
+
+    <div class="ticker-wrap border-b-2 border-black font-bold uppercase text-xs tracking-widest">
+        <div class="ticker-content">
+            BREAKING: DIRECTOR SIGHTED LEAVING BUILDING AT 1:54 PM — ALERT: MS24 AND MS25 HOSTAGES FREED FROM LAB VIVAS, JOIN FRONT LINES — ALERT: DSO 'ADRENE' SUCCESSFULLY EXECUTES TACTICAL LUNCH RETREAT VIA BACK DOOR — UPDATE: CHAI AND SAMOSAS DEPLOYED TO COUNTERACT RAIN AND WARDEN DELAY TACTICS — 
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-8 space-y-8">
+                
+                <article class="bg-white p-6 md:p-8 news-border">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-red-800 text-white text-[10px] uppercase font-bold px-2 py-1 tracking-widest">Frontline Report</span>
+                        <span class="text-gray-500 text-sm font-bold uppercase">6:39 PM // Sports Complex Blockade</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black leading-none mb-4 tracking-tight">Math Professor Calculates Shortest Route Home; It Involves Four Student Feet</h2>
+                    
+                    <div class="w-full bg-gray-200 h-48 md:h-64 mb-6 border-2 border-black flex items-center justify-center relative overflow-hidden">
+                        <svg viewBox="0 0 500 200" class="w-full h-full opacity-60">
+                            <rect x="0" y="80" width="500" height="40" fill="#4b5563" />
+                            <line x1="0" y1="100" x2="500" y2="100" stroke="#fcd34d" stroke-width="4" stroke-dasharray="20,10" />
+                            <path d="M 50 70 L 150 70 L 170 110 L 30 110 Z" fill="#991b1b" />
+                            <circle cx="250" cy="100" r="15" fill="#1f2937" />
+                            <circle cx="280" cy="100" r="15" fill="#1f2937" />
+                            <circle cx="310" cy="100" r="15" fill="#1f2937" />
+                            <circle cx="340" cy="100" r="15" fill="#1f2937" />
+                            <path d="M 180 100 L 220 80 L 210 100 L 230 120 Z" fill="#dc2626" />
+                        </svg>
+                        <div class="absolute bottom-2 right-2 bg-black text-white text-[10px] px-2 py-1 uppercase font-bold">Figure 1: Applied Geometry</div>
+                    </div>
+
+                    <p class="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium mb-4">
+                        In a stunning practical application of vehicular physics, Prof. Chanchal Kumar from the Math Department allegedly attempted to drive his car through a solid human chain of students, resulting in four flattened feet and zero apologies.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                        The incident occurred during Phase 4 of yesterday's escalating protests. After standing in the rain for nearly eight hours, students blocked the sole road connecting the Faculty Residence to the campus. Faced with the blockade, Prof. Kumar reportedly decided that stopping was mathematically inefficient.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                        When students swarmed the vehicle to halt it, the professor allegedly refused to express remorse, asserting a new institute policy: <em>"I won't say sorry unless a student actually has a broken leg."</em> The DSO arrived at 6:50 PM to manage the chaos, kicking off a frantic debate among organizers about whether calling the police would secure their 14 core demands faster than standing in the rain.
+                    </p>
+                </article>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <article class="bg-white p-5 news-border flex flex-col">
+                        <span class="text-red-700 font-bold text-[10px] uppercase tracking-widest mb-2 border-b border-red-200 pb-1">Administrative Tactics</span>
+                        <h3 class="text-2xl font-black leading-tight mb-3">DSO 'Adrene' Masters the Art of the Back-Door Lunch Escape</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            At 12:46 PM, the administration tried to divide the mob by inviting only the SRC for a closed-door chat. The crowd refused. By 2:24 PM, students realized the DSO had successfully outflanked 500 people by simply walking out the back door to get lunch. Students scrambled to blockade the rear exits, forcing officials to awkwardly re-enter the same way at 3:06 PM.
+                        </p>
+                        <div class="bg-gray-100 p-3 italic text-sm text-gray-600 border-l-4 border-black">
+                            "They claim we are a 'small fraction', but it apparently takes a tactical stealth operation just to get a sandwich."
+                        </div>
+                    </article>
+
+                    <article class="bg-white p-5 news-border flex flex-col">
+                        <span class="text-red-700 font-bold text-[10px] uppercase tracking-widest mb-2 border-b border-red-200 pb-1">Irony Watch</span>
+                        <h3 class="text-2xl font-black leading-tight mb-3">Faculty Suddenly Discover Deep Meaning of 'Medical Emergencies'</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            As students blocked the Sports Complex road between 4:45 and 5:30 PM, faculty members trapped in their cars suddenly began citing "emergencies" to pass. Students, whose initial protest was sparked by the Health Center ignoring actual medical emergencies, ruthlessly mocked the hypocrisy, demanding a written Gate Pass from the DSO before allowing any car to move.
+                        </p>
+                        <div class="bg-gray-100 p-3 italic text-sm text-gray-600 border-l-4 border-black">
+                            "Oh, you have an emergency? Please write a 500-word email to the Dean justifying it. Approval takes 48 hours."
+                        </div>
+                    </article>
+
+                </div>
+
+                <article class="bg-black text-white p-6 md:p-8 news-border">
+                    <h2 class="text-3xl font-black mb-4 uppercase text-red-500">The Midnight Escort Service</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                        Following the disastrous H3 Hostel negotiations (8:43 PM - 10:40 PM), where the DSO utilized advanced "manipulation games" and hypothetical examples rather than addressing the Entry/Exit register, the SRC asked students to lift the stadium blockade as a show of good faith.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed font-bold">
+                        The good faith failed. Realizing the DSO refused to budge on core issues, the students decided officials shouldn't walk home alone in the dark. At 11:13 PM, hundreds of students formed an uninvited escort, marching directly behind the DSO all the way to the Faculty Residence Area until the stroke of midnight.
+                    </p>
+                </article>
+
+            </div>
+
+            <aside class="lg:col-span-4 space-y-8">
+                
+                <div class="bg-white p-5 news-border">
+                    <h3 class="text-2xl font-black uppercase mb-4 border-b-2 border-black pb-2">Anatomy of a Stand-Off</h3>
+                    
+                    <div class="space-y-6 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                        
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-6 h-6 rounded-full border border-white bg-black text-slate-500 shadow shrink-0 z-10"></div>
+                            <div class="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-2">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-red-700 text-xs uppercase">9:43 AM</span>
+                                    <span class="font-bold text-sm">Low Numbers</span>
+                                    <p class="text-xs text-gray-600 mt-1">MS24/MS25 held hostage by mandatory lab vivas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-6 h-6 rounded-full border border-white bg-black text-slate-500 shadow shrink-0 z-10"></div>
+                            <div class="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-2 text-right md:text-left">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-red-700 text-xs uppercase">11:17 AM</span>
+                                    <span class="font-bold text-sm">The Insult</span>
+                                    <p class="text-xs text-gray-600 mt-1">DSO dismisses crowd as a "small fraction." Crowd immediately grows.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-6 h-6 rounded-full border border-white bg-black text-slate-500 shadow shrink-0 z-10"></div>
+                            <div class="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-2">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-red-700 text-xs uppercase">1:20 PM</span>
+                                    <span class="font-bold text-sm">Samosa Logistics</span>
+                                    <p class="text-xs text-gray-600 mt-1">Organizers deploy chai/samosas to combat rain and warden delay tactics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-6 h-6 rounded-full border border-white bg-red-700 text-slate-500 shadow shrink-0 z-10 animate-pulse"></div>
+                            <div class="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-2 text-right md:text-left">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-red-700 text-xs uppercase">6:10 PM</span>
+                                    <span class="font-bold text-sm">Resignations Demanded</span>
+                                    <p class="text-xs text-gray-600 mt-1">After 8 hours in rain with zero humanity shown, the mob demands DSO's office resigns.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="bg-[#111827] text-white p-6 news-border text-center">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-2">Sponsored by the Academic Office</span>
+                    <h4 class="text-2xl font-black mb-2 text-yellow-400">THE WARDEN DELAY TACTIC™</h4>
+                    <p class="text-sm text-gray-300 mb-4">When students refuse a closed-door SRC meeting, simply send a warden into the rain to talk at them for 30 minutes! It won't work, but it kills time.</p>
+                    <div class="text-xs border border-white/20 py-2 bg-white/5">Disclaimer: May result in mass demands for resignation.</div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white py-10 mt-12 border-t-8 border-red-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-black mb-4 uppercase tracking-widest text-gray-200">The IISERM Echo</h2>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-6 text-gray-500 text-xs font-bold uppercase tracking-wider">
+                <a href="#" class="hover:text-white transition">Ignore Petitions</a>
+                <a href="#" class="hover:text-white transition">Escape Routes</a>
+                <a href="#" class="hover:text-white transition">Submit Broken Leg X-Ray</a>
+            </div>
+            <p class="text-[10px] text-gray-600">© 2026 Bureau of Student Mitigation. All rights reserved. Any attempt to use the front door during a protest is strictly prohibited.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logic to Show the Glossy Modal on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const glossyModal = document.getElementById('glossy-modal');
+                glossyModal.classList.remove('hidden'); 
+                glossyModal.style.opacity = '1'; 
+            }, 800); // Slight delay for dramatic effect
+        });
+
+        function closeGlossyModal() {
+            const glossyModal = document.getElementById('glossy-modal');
+            glossyModal.style.opacity = '0'; 
+            setTimeout(() => {
+                glossyModal.classList.add('hidden'); 
+            }, 500); 
+        }
+        
+        document.getElementById('glossy-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGlossyModal();
+            }
+        });
+    </script>
+</body>
+</html>
