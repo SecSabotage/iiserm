@@ -8,8 +8,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Prevent Flash of Unstyled Content (FOUC) for Dark Mode -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
     <script>
         tailwind.config = {
+            darkMode: 'class', // Enables dark mode toggling
             theme: {
                 extend: {
                     fontFamily: {
@@ -35,14 +46,13 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f5f9; 
+            @apply bg-slate-100 dark:bg-slate-800;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
+            @apply bg-slate-300 dark:bg-slate-600 rounded-md;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
+            @apply bg-slate-400 dark:bg-slate-500;
         }
         /* Accordion transition */
         .accordion-content {
@@ -60,25 +70,40 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-brand-200 selection:text-brand-900 dark:selection:bg-brand-800 dark:selection:text-brand-50 transition-colors duration-200">
 
     <!-- Header / Navbar -->
-    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-md">
+    <header class="bg-brand-900 dark:bg-slate-950 text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between py-4 gap-4">
-                <div class="flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
-                    </svg>
-                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">IISER Mohali Junior Guide</h1>
+                <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+                    <div class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
+                        </svg>
+                        <h1 class="text-xl md:text-2xl font-bold tracking-tight">IISER Mohali Junior Guide</h1>
+                    </div>
+                    <!-- Theme Toggle for Mobile -->
+                    <button id="theme-toggle-mobile" class="md:hidden p-2 rounded-full hover:bg-white/10 text-brand-100 transition-colors" aria-label="Toggle Dark Mode">
+                        <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
                 </div>
-                <div class="w-full md:w-1/3 relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <input type="text" id="searchInput" placeholder="Search 160+ FAQs..." class="w-full bg-slate-800 text-white placeholder-slate-400 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow">
+                
+                <div class="flex items-center w-full md:w-1/2 lg:w-1/3 gap-3 relative">
+                    <div class="relative w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search 160+ FAQs..." class="w-full bg-slate-800 dark:bg-slate-800 text-white placeholder-slate-400 border border-transparent dark:border-slate-700 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-400 transition-shadow">
+                    </div>
+                    <!-- Theme Toggle for Desktop -->
+                    <button id="theme-toggle-desktop" class="hidden md:block p-2 rounded-full hover:bg-white/10 text-brand-100 transition-colors flex-shrink-0" title="Toggle Dark Mode">
+                        <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -88,8 +113,8 @@
         
         <!-- Sidebar Navigation (Table of Contents) -->
         <aside class="w-full md:w-1/4 hidden md:block">
-            <div class="sticky top-28 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Table of Contents</h3>
+            <div class="sticky top-28 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-200">
+                <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Table of Contents</h3>
                 <nav class="space-y-1 text-sm font-medium" id="toc-menu">
                     <!-- Dynamic TOC will be injected here -->
                 </nav>
@@ -98,19 +123,57 @@
 
         <!-- Main Content (FAQs) -->
         <main class="w-full md:w-3/4 pb-20 relative">
+            
+            <div class="flex justify-between items-end mb-6 pb-2 border-b border-slate-200 dark:border-slate-700">
+                <h2 class="text-lg font-bold text-slate-800 dark:text-slate-200">All Questions</h2>
+                <button id="toggle-all" class="text-sm font-medium text-brand-600 hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300 transition-colors flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
+                    Expand All
+                </button>
+            </div>
+
             <div id="faq-container" class="space-y-12">
                 <!-- Dynamic FAQs will be injected here -->
             </div>
             
             <!-- Hidden State for Search -->
             <div id="no-results" class="hidden text-center py-12">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-slate-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-slate-300 dark:text-slate-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <h3 class="text-lg font-medium text-slate-600">No matching FAQs found</h3>
-                <p class="text-slate-400 text-sm mt-1">Try tweaking your search terms.</p>
+                <h3 class="text-lg font-medium text-slate-600 dark:text-slate-400">No matching FAQs found</h3>
+                <p class="text-slate-400 dark:text-slate-500 text-sm mt-1">Try tweaking your search terms.</p>
             </div>
+
+            <!-- Disclaimer / Contact Section -->
+            <div class="mt-16 p-6 sm:p-8 bg-brand-50 dark:bg-slate-800/50 border border-brand-100 dark:border-brand-900/50 rounded-2xl text-center shadow-sm">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 rounded-full mb-4">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">Notice something missing or incorrect?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 max-w-lg mx-auto">
+                    The campus rules and resources are always evolving. If you need to update information, request a removal, or add something completely new to help out the juniors, please let us know!
+                </p>
+                <a href="mailto:iiserm@cc.cc" class="inline-flex items-center justify-center px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 dark:focus:ring-offset-slate-900">
+                    <svg class="w-5 h-5 mr-2 -ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Contact Maintainer (iiserm@cc.cc)
+                </a>
+            </div>
+
         </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-brand-600 hover:bg-brand-700 text-white p-3 rounded-full shadow-lg shadow-brand-500/30 opacity-0 pointer-events-none transition-all duration-300 z-50 transform translate-y-4" aria-label="Back to Top">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+        <div class="bg-slate-800 dark:bg-slate-700 text-white px-4 py-2 rounded-full shadow-lg text-sm font-medium flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Link Copied!
+        </div>
     </div>
 
     <!-- Live Data Parser and UI Generator -->
@@ -387,6 +450,16 @@ Software, Subscriptions, and Research Access
 **Q: Does the institute email ID give access to Canva Premium?**A: No, but you can apply for it, and the academic secretary can grant you access (search your emails for details) [23].
 `;
 
+        // Slugify helper for generating IDs
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+        }
+
         // Parse Raw Data Logic
         const lines = rawData.split('\n');
         const faqs = [];
@@ -402,12 +475,14 @@ Software, Subscriptions, and Research Access
                 // Strip any leading bullet point breaks created during parsing
                 cleanA = cleanA.replace(/^(<br>\s*•\s*)+/, '');
                 
-                // Convert URLs into clickable links for convenience
-                cleanA = cleanA.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-brand-600 hover:underline break-all font-medium">$1</a>');
+                // Convert URLs into clickable links
+                cleanA = cleanA.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 hover:underline break-all font-medium transition-colors">$1</a>');
 
+                let cleanQ = currentQ.replace(/^\*\*Q:\s*/, '').replace(/\*\*/g, '').trim();
                 faqs.push({
+                    id: slugify(cleanQ).substring(0, 50),
                     category: currentCategory,
-                    question: currentQ.replace(/^\*\*Q:\s*/, '').replace(/\*\*/g, '').trim(),
+                    question: cleanQ,
                     answer: cleanA
                 });
                 currentQ = "";
@@ -420,11 +495,8 @@ Software, Subscriptions, and Research Access
             let trimmed = line.trim();
             if (!trimmed) return;
 
-            // Check if it's a new question
             if (trimmed.startsWith('**Q:')) {
-                pushFaq(); // commit previous FAQ to array
-                
-                // Regex checks if Q and A are on the exact same line
+                pushFaq(); 
                 let match = trimmed.match(/^\*\*Q:\s*(.*?)\*\*\s*A:(.*)$/);
                 if (match) {
                     currentQ = match[1];
@@ -435,26 +507,22 @@ Software, Subscriptions, and Research Access
                     isParsingA = false;
                 }
             } 
-            // Check if answer starts on a new line
             else if (trimmed.startsWith('A:')) {
                 isParsingA = true;
                 currentA += " " + trimmed.replace(/^A:\s*/, '');
             } 
-            // Append continuation of an answer (handles multi-line list answers)
             else if (isParsingA) {
                 currentA += "<br><span class='ml-4 block mt-1'>• " + trimmed + "</span>";
             } 
-            // If it's none of the above, it's a Category Header!
             else {
                 currentCategory = trimmed;
             }
         });
-        pushFaq(); // commit the very last item
+        pushFaq(); 
 
         // Render UI dynamically
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Group the parsed FAQs by Category
             const groupedFaqs = faqs.reduce((acc, faq) => {
                 if (!acc[faq.category]) acc[faq.category] = [];
                 acc[faq.category].push(faq);
@@ -464,38 +532,42 @@ Software, Subscriptions, and Research Access
             const sidebar = document.getElementById('toc-menu');
             const container = document.getElementById('faq-container');
 
-            // Generate HTML for each Category
             Object.keys(groupedFaqs).forEach((category, index) => {
                 const catId = 'cat-' + index;
 
-                // 1. Add sidebar link
+                // Sidebar link
                 const link = document.createElement('a');
                 link.href = '#' + catId;
-                link.className = 'block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium';
+                link.className = 'block py-2 px-3 rounded-md text-slate-600 dark:text-slate-400 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-700 dark:hover:text-slate-200 transition-colors text-sm font-medium';
                 link.textContent = category;
+                link.setAttribute('data-target', catId);
                 sidebar.appendChild(link);
 
-                // 2. Build Category Section
+                // Build Section
                 const section = document.createElement('section');
                 section.id = catId;
-                section.className = 'faq-section scroll-mt-24';
+                section.className = 'faq-section scroll-mt-28';
 
                 const headerHtml = `
-                    <div class="mb-4 border-b border-slate-200 pb-2">
-                        <h2 class="text-2xl font-bold text-slate-800">${category}</h2>
+                    <div class="mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">${category}</h2>
                     </div>
                     <div class="space-y-3">
                 `;
 
-                // 3. Build Items within Section
                 const itemsHtml = groupedFaqs[category].map(faq => `
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg">
+                    <div id="${faq.id}" class="faq-item bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm scroll-mt-28 transition-colors duration-200">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 dark:text-slate-200 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg group">
                             <span class="pr-4 leading-tight">${faq.question}</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            <div class="flex items-center gap-3">
+                                <span title="Copy link" class="copy-link-btn hidden group-hover:block p-1.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors" data-link="#${faq.id}">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                                </span>
+                                <svg class="chevron-icon w-5 h-5 text-slate-400 dark:text-slate-500 transition-transform duration-300 transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed border-t border-slate-50 mt-2 pt-2">
+                            <div class="px-5 pb-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-50 dark:border-slate-700/50 mt-2 pt-2">
                                 ${faq.answer}
                             </div>
                         </div>
@@ -506,23 +578,113 @@ Software, Subscriptions, and Research Access
                 container.appendChild(section);
             });
 
-            // Initialize Event Listeners
+            initThemeToggle();
             initAccordions();
             initSearch();
-            initScrollSpy();
+            initScrollSpyFixed();
+            initExpandAll();
+            initCopyLinks();
+            initBackToTop();
+            checkUrlHash();
         });
 
-        // Toggle Accordions
+        // Toggle Dark Mode
+        function initThemeToggle() {
+            const html = document.documentElement;
+            const btnDesktop = document.getElementById('theme-toggle-desktop');
+            const btnMobile = document.getElementById('theme-toggle-mobile');
+
+            const toggleTheme = () => {
+                html.classList.toggle('dark');
+                localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+            };
+
+            btnDesktop.addEventListener('click', toggleTheme);
+            btnMobile.addEventListener('click', toggleTheme);
+        }
+
+        // Expand/Collapse All Button
+        function initExpandAll() {
+            const toggleAllBtn = document.getElementById('toggle-all');
+            let isAllExpanded = false;
+
+            toggleAllBtn.addEventListener('click', () => {
+                isAllExpanded = !isAllExpanded;
+                
+                if (isAllExpanded) {
+                    toggleAllBtn.innerHTML = '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg> Collapse All';
+                } else {
+                    toggleAllBtn.innerHTML = '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg> Expand All';
+                }
+
+                document.querySelectorAll('.faq-btn').forEach(btn => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('.chevron-icon');
+                    
+                    if (isAllExpanded) {
+                        content.classList.add('expanded');
+                        icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.remove('expanded');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+        }
+
+        // Accordion functionality
         function initAccordions() {
-            const accordionBtns = document.querySelectorAll('.faq-btn');
-            accordionBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+            document.querySelectorAll('.faq-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Prevent firing if copy link was clicked
+                    if (e.target.closest('.copy-link-btn')) return;
+
                     const content = this.nextElementSibling;
-                    const icon = this.querySelector('svg');
+                    const icon = this.querySelector('.chevron-icon');
                     content.classList.toggle('expanded');
                     icon.classList.toggle('rotate-180');
                 });
             });
+        }
+
+        // Copy Links functionality
+        function initCopyLinks() {
+            const toast = document.getElementById('toast-container');
+            let toastTimeout;
+
+            document.querySelectorAll('.copy-link-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevents accordion from toggling
+                    const hash = btn.getAttribute('data-link');
+                    const fullUrl = window.location.origin + window.location.pathname + hash;
+                    
+                    navigator.clipboard.writeText(fullUrl).then(() => {
+                        // Show toast
+                        clearTimeout(toastTimeout);
+                        toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                        
+                        toastTimeout = setTimeout(() => {
+                            toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                        }, 2000);
+                    });
+                });
+            });
+        }
+
+        // Check URL hash on load to open a specific FAQ
+        function checkUrlHash() {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1); // remove '#'
+                const targetElement = document.getElementById(targetId);
+                if (targetElement && targetElement.classList.contains('faq-item')) {
+                    const btn = targetElement.querySelector('.faq-btn');
+                    if (btn) btn.click();
+                    // Scroll happens automatically due to ID, but let's ensure it's offset
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
         }
 
         // Live Search Filter
@@ -554,36 +716,79 @@ Software, Subscriptions, and Research Access
                 });
 
                 noResultsMsg.style.display = totalVisibleItems === 0 ? 'block' : 'none';
+                // Trigger scroll spy re-evaluation
+                window.dispatchEvent(new Event('scroll'));
             });
         }
 
-        // Highlight TOC Sidebar on Scroll
-        function initScrollSpy() {
+        // Deterministic ScrollSpy (Fix for TOC bug)
+        function initScrollSpyFixed() {
             const tocLinks = document.querySelectorAll('#toc-menu a');
             const sections = document.querySelectorAll('.faq-section');
             
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -80% 0px',
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        tocLinks.forEach(link => {
-                            link.classList.remove('text-brand-700', 'bg-brand-100', 'font-bold');
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('text-brand-700', 'bg-brand-100', 'font-bold');
-                            }
-                        });
+            window.addEventListener('scroll', () => {
+                let currentId = '';
+                
+                // Find which section is currently active based on viewport position
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    // A section is active if its top is above the middle of screen 
+                    // AND its bottom is below the header
+                    if (rect.top <= 200 && rect.bottom >= 150) {
+                        currentId = section.id;
                     }
                 });
-            }, observerOptions);
 
-            sections.forEach(section => observer.observe(section));
+                // If we scrolled past all sections (e.g. at the bottom disclaimer), highlight the last one
+                if (!currentId && sections.length > 0) {
+                    const lastSection = sections[sections.length - 1];
+                    if (lastSection.getBoundingClientRect().top < 0) {
+                        currentId = lastSection.id;
+                    }
+                }
+                
+                // Fallback to first if at the very top
+                if (!currentId && sections.length > 0 && window.scrollY === 0) {
+                    currentId = sections[0].id;
+                }
+
+                tocLinks.forEach(link => {
+                    // Reset classes
+                    link.classList.remove('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700');
+                    link.classList.add('text-slate-600', 'dark:text-slate-400');
+                    
+                    if (link.getAttribute('data-target') === currentId) {
+                        // Apply active classes
+                        link.classList.remove('text-slate-600', 'dark:text-slate-400');
+                        link.classList.add('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700');
+                    }
+                });
+            }, { passive: true });
+
+            // Initialize on load
+            window.dispatchEvent(new Event('scroll'));
         }
+
+        // Back to top floating button
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                }
+            }, { passive: true });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
     </script>
 </body>
 </html>
