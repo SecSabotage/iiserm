@@ -52,7 +52,7 @@
             overflow: hidden;
         }
         .accordion-content.expanded {
-            max-height: 1000px; /* Arbitrary large height */
+            max-height: 2000px; /* Arbitrary large height for long answers */
             opacity: 1;
         }
         .rotate-180 {
@@ -67,7 +67,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between py-4 gap-4">
                 <div class="flex items-center gap-3">
-                    <!-- Academic Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
@@ -79,7 +78,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Search FAQs..." class="w-full bg-slate-800 text-white placeholder-slate-400 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow">
+                    <input type="text" id="searchInput" placeholder="Search 160+ FAQs..." class="w-full bg-slate-800 text-white placeholder-slate-400 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow">
                 </div>
             </div>
         </div>
@@ -91,513 +90,17 @@
         <aside class="w-full md:w-1/4 hidden md:block">
             <div class="sticky top-28 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Table of Contents</h3>
-                <nav class="space-y-2 text-sm font-medium" id="toc-menu">
-                    <a href="#deliveries" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Deliveries & Transport</a>
-                    <a href="#academics" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Academics & Library</a>
-                    <a href="#facilities" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Campus Facilities</a>
-                    <a href="#admin" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Administrative Procedures</a>
-                    <a href="#medical" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Medical & Sick Leave</a>
-                    <a href="#it" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">IT & Network Systems</a>
+                <nav class="space-y-1 text-sm font-medium" id="toc-menu">
+                    <!-- Dynamic TOC will be injected here -->
                 </nav>
             </div>
         </aside>
 
         <!-- Main Content (FAQs) -->
-        <main class="w-full md:w-3/4 space-y-12 pb-20" id="faq-container">
-            
-            <!-- SECTION 1 -->
-            <section id="deliveries" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Deliveries, Transport, and Local Services</h2>
-                    <p class="text-slate-500 text-sm mt-1">Everything you need to know about getting around and getting things delivered.</p>
-                </div>
-                
-                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-6">Deliveries, Post, and Couriers</h3>
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What address should I use for Amazon, Myntra, or other online deliveries?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                You should use the address: "H7 parking, IISER Mohali, Sector 81, Mohali, Punjab". Deliveries are brought to the H7 parking area, and the delivery person will call you when they arrive.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What if I am not physically available to collect my Amazon parcel?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Delivery will simply be attempted again the next day. Amazon delivery agents generally come once in the morning and once in the evening.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where is the nearest Post Office to send speed posts and parcels?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The most recommended nearest option is the NIPER Post Office, which has a separate gate just ahead of the main campus gate. The Chilla Village Post Office is another walkable option. The Aerocity Post Office is also nearby in terms of distance, but it requires changing autos twice and a 3-minute walk.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Is there an alternative way to send letters or small parcels without going outside?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Yes, the stationery shop uncle in Shop C helps send speed posts, parcels, letters, and documents for a fee. Alternatively, the regular postman usually comes to the H7 parking area around 12:00 PM daily (excluding public holidays); you can hand your envelope directly to him.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Which courier services provide doorstep pickup from the campus?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Delhivery provides doorstep pickup services from the campus.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-8">Campus Transport and Local Travel</h3>
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What are the timings for the institute bus?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                On weekdays, the bus leaves the campus at 5:10 PM, 6:10 PM, and 7:10 PM. On weekends (Saturdays and Sundays), the timings are 11:00 AM, 2:00 PM, 5:00 PM, and 6:10 PM. The bus picks up students returning from Phase 10/11 in front of the Lecture Hall Complex (LHC) around 6:10 PM and 7:10 PM.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Can we have cabs (like Uber) pick us up from inside the campus?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Yes, cabs can come inside the campus for pickups, but they are not allowed inside between 10:00 PM and 6:00 AM.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Are cabs or Rapido available from Chandigarh Railway Station late at night?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Yes, travelling between the campus and the station at those hours (1:00 AM - 3:00 AM) is generally not an issue. You can pre-book an Uber, or check the community cab-sharing groups to find students arriving around the same time. It takes approximately 1 hour considering traffic.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How do I travel to Delhi using roadways buses?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Buses to Delhi are constantly available. You can catch them from Sector 17 (which is safer at night) or Tribune Chowk. AC buses depart almost every 20-30 minutes, and non-AC buses depart every 10 minutes from Tribune Chowk.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-8">Local Services, Repairs, and Daily Utilities</h3>
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I get my phone or laptop repaired?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                For phones, "Sonu Mobiles" in Phase 11 (near the Gurudwara) is highly recommended, though negotiate to avoid overbilling. For laptops, "Gadget Lab" in Sector 82 is recommended. Sector 20 and Sector 34A also have many retail shops and original HP stores.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I buy new spectacles or get broken glasses repaired?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Visit Lenskart in Sector 82 or Phase 10, or Titan Eye+ in Mohali Citi Centre. For repairs, there is a dedicated shop in Phase 10, and another near CP67. The stationery shop uncle in Shop C also fixes glasses for ₹100.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I find a reliable tailor, bag repair, or cobbler?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                <strong>Tailor:</strong> Shop C, Phase 11 mini market, or near the Verka booth in Sector 66.<br>
-                                <strong>Bags/Trolleys:</strong> Phase 11 mini market or shops behind the petrol pump in Phase 11/10.<br>
-                                <strong>Cobbler:</strong> Phase 11, walk straight from the petrol pump on the left (sits until 6:00 PM).
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I get thick books printed and spiral bound, or A0 posters printed?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Spiral binding is done at Shop C. For printing very thick books (e.g., 2000 pages) with proper binding or A0 posters, go to Azad Hind Stores (walking distance from campus) or Printster.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 2 -->
-            <section id="academics" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Academic and Library Handbook</h2>
-                    <p class="text-slate-500 text-sm mt-1">Rules regarding the library, courses, ERP, grades, and academic policies.</p>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What are the timings of the library, especially on weekends and exam weeks?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The library usually opens at 9:00 AM or 10:00 AM. On regular Sundays, it's 10:00 AM - 1:00 PM, locked for lunch, then 2:00 PM - 6:00 PM. During exam weeks, hours extend until midnight (12:00 AM) and sometimes remain open all night until 6:00 AM.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What are the rules and fines for borrowing books from the library?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                BS-MS students can borrow a max of 5 books; PhD students can borrow 7. Textbooks issue for 2 days (₹20/day fine). Reference books issue for 15 days (₹1/day fine). Automated midnight emails are just reminders to submit by 23:59 that day.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What are the login credentials for the ERP portal if I am a fresher?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Your username is your registration number with "ms" in lowercase (e.g., ms25xxx). For the first login, your password is also your exact registration number. If invalid, try your personal email provided during admission, or raise a CC ticket.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How does taking a medical leave affect grading for missed exams or labs?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                <strong>Labs:</strong> With an approved leave, no marks are deducted. Without it, you get zero for that experiment. <br>
-                                <strong>Mid-sems:</strong> You will not be awarded zero. It depends on the professor (retest or pro-rata formula). <br>
-                                <strong>End-sems:</strong> Missed with medical reasons yields an 'I' (Incomplete) grade, clearable via retest. Without medical reasons, it yields an 'F'.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What is a course overload and who is eligible?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                It allows you to take one extra course beyond the standard structure to complete credits early. You need a CPI > 7.5. Available in 5th, 6th, 8th, and 9th semesters (not allowed in 10th).
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Do I need a No Objection Certificate (NOC) for internships outside IISER?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Only if the host institute demands it (usually for hostel accommodation). Apply via the NOC Google Form, providing proof. The first copy per semester is free; subsequent copies are ₹100.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What is the policy on using AI tools (like ChatGPT) for IDC101 (Python)?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Using AI to complete graded assignments is prohibited. However, using it to learn basic coding concepts, logic, and syntax is heavily advised by the community, as long as you write the final code yourself.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 3 -->
-            <section id="facilities" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Campus Facilities and Daily Amenities</h2>
-                    <p class="text-slate-500 text-sm mt-1">Eateries, shops, hostel living, and finding your way around.</p>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>When do the various campus canteens and eateries open and close?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                <ul class="list-disc pl-5 space-y-1">
-                                    <li>H7 Canteen: Opens around 10:00 AM</li>
-                                    <li>H6 Canteen: 10:00 PM to 1:00 AM</li>
-                                    <li>SRM Canteen: Opens 3:30 PM to 4:00 PM</li>
-                                    <li>Rajasthani Restaurant: Opens 10:00 AM to 10:30 AM</li>
-                                    <li>Juice Centre: Stays open until 11:30 PM</li>
-                                    <li>Amul Shop: Opens ~8:40 PM until 11:00 PM</li>
-                                    <li>Night Canteen: Open until 3:00 AM</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I find free washing machines and how do they work?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                There is a free machine in H8 (frequently malfunctions). Haier machines cost ₹11 and can be booked twice in 24 hours. A mix-mode wash takes ~3 hours.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What should I do if I am locked out of my room or lose keys?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The hostel caretaker or warden has spare room keys. For lost padlock keys, the caretaker can provide a hammer or arrange a worker.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How do I book a room in the Visitor's Hostel (VH)?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Email visitorhostel@iisermohali.ac.in and cc deanstudents@iisermohali.ac.in, mentioning check-in/out times and number of persons. It costs ₹900/day. Siblings/cousins need to be accompanied by parents.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 4 -->
-            <section id="admin" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Student Administrative Procedures</h2>
-                    <p class="text-slate-500 text-sm mt-1">Gate passes, ID cards, certificates, and office hours.</p>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Do I need a gate pass to leave the campus, and how do I get it?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Yes, for weekends or holidays. Get it from any hostel caretaker (preferably H6/H8) 4-5 hours prior. For early morning departures, ask the night caretaker after 9:00 PM. Keep a picture of it in case you lose the paper!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What is the exact procedure to get a new institute ID card if I lost it?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                First, file an online FIR/DDR on the Punjab Police Saanjh portal (costs ₹20). Email the Dean of Students (DSO) with the FIR copy attached. A new ID costs ₹200. You can use your PAN card as a valid ID in the meantime.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How do I get a Bonafide Certificate?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Fill out the Academic Documents Google Form, then submit a handwritten letter to the Dean Academics (DAO) office. It takes 3-4 working days. Alternatively, collect a physical form from the DSO and submit with your Aadhar card copy.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where is the Dean Academics (DAO) office and what are the hours?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The DAO is located in H7. Student visiting hours are generally 11:00 AM to 12:30 PM (closed Saturday afternoons and all day Sunday).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 5 -->
-            <section id="medical" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Medical Services and Sick Leave</h2>
-                    <p class="text-slate-500 text-sm mt-1">Health Centre procedures, medical leaves, and nearby hospitals.</p>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>When does the Health Centre open and what are its timings?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Working hours are generally 9:00 AM to 5:00 PM (Morning: 8:00 AM - 1:30 PM, Afternoon: 3:15 PM - 6:00 PM). Saturdays are 8:00 AM to 1:30 PM. It is closed on Sundays and mid-sem breaks.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>When and where is the nurse available in the hostels?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The nurse comes to the hostels around 8:00 PM. The nurse's room is in H5, first floor, last room of the boys' wing.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How do I apply for a medical/sick leave?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Fill out the Medical Leave Google Form sent by DAO/SRMC within 1 week of the end day of your absence. You must upload a medical certificate or prescription that clearly states the number of rest days advised. Clinical certificates from home also work.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Does the institute health insurance cover OPD expenses?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Generally, no. Insurance only works if you are admitted for more than 24 hours. However, showing your institute health ID can get you discounted CGHS rates for OPD at applicable hospitals (like Grecian Hospital).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 6 -->
-            <section id="it" class="faq-section scroll-mt-24">
-                <div class="mb-6 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl font-bold text-slate-800">Campus IT and Network Systems</h2>
-                    <p class="text-slate-500 text-sm mt-1">Wi-Fi configuration, Computer Centre, and software access.</p>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>What is the password and configuration for the student Wi-Fi?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The password for the MS2025 network is `RiiseRm@81` (case sensitive). You must set your proxy to `172.16.2.251` and the proxy port to `3128`.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Where can I get a reliable, no-compromise Wi-Fi connection on campus?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                The study rooms in the older hostels (H5, H6, H7, H8) have dedicated Wi-Fi. Alternatively, use the LAN ports on the 4th floor of the library.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How can I access blocked services like Discord sharing or Windows Updates?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Bypass proxy restrictions using a VPN like Cloudflare WARP or Proxifier. Ensure you disable the manual proxy after connecting to the VPN.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>How do I access research papers if the institute IP isn't working?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Email the library requesting off-campus access. Alternatively, the community uses Sci-Hub, Anna's Archive, Z-Library, or simply emails the paper's author directly.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
-                            <span>Does the institute provide access to Mathematica, MATLAB, or Grammarly?</span>
-                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
-                                Yes. For Mathematica, email Head CC. For MATLAB, sign in with your institute email. For Grammarly Pro and Turnitin, email the librarian (Sonam).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <main class="w-full md:w-3/4 pb-20 relative">
+            <div id="faq-container" class="space-y-12">
+                <!-- Dynamic FAQs will be injected here -->
+            </div>
             
             <!-- Hidden State for Search -->
             <div id="no-results" class="hidden text-center py-12">
@@ -607,38 +110,423 @@
                 <h3 class="text-lg font-medium text-slate-600">No matching FAQs found</h3>
                 <p class="text-slate-400 text-sm mt-1">Try tweaking your search terms.</p>
             </div>
-
         </main>
     </div>
 
-    <!-- Scripts -->
+    <!-- Live Data Parser and UI Generator -->
     <script>
+        // The raw dataset (meta-text stripped for clean categorization)
+        const rawData = `
+Deliveries, Post, and Couriers
+**Q: What address should I use for Amazon, Myntra, or other online deliveries?**A: You should use the address: "H7 parking, IISER Mohali, Sector 81, Mohali, Punjab" [1]. Deliveries are brought to the H7 parking area, and the delivery person will call you when they arrive [1, 2].
+**Q: What if I am not physically available to collect my Amazon parcel?**A: Delivery will simply be attempted again the next day [3]. Amazon delivery agents generally come once in the morning and once in the evening [4].
+**Q: Where is the nearest Post Office to send speed posts and parcels?**A: The most recommended nearest option is the NIPER Post Office, which has a separate gate just ahead of the main campus gate [5, 6]. The Chilla Village Post Office is another walkable option [6]. The Aerocity Post Office is also nearby in terms of distance, but it requires changing autos twice and a 3-minute walk [7].
+**Q: Is there an alternative way to send letters or small parcels without going outside the campus?**A: Yes, the stationery shop uncle in Shop C helps send speed posts, parcels, letters, and documents for a fee [8, 9]. Alternatively, the regular postman usually comes to the H7 parking area around 12:00 PM daily (excluding public holidays); you can hand your envelope directly to him [10].
+**Q: Which courier services provide doorstep pickup from the campus?**A: Delhivery provides doorstep pickup services from the campus [2].
+**Q: What should I do if a courier (like Shadowfax) shows "out for delivery" but the agent doesn't call or show up?**A: A user raised this issue, but no definitive solution was provided by the community [10].
+**Q: How do I contact Blue Dart customer care if their number isn't allowing me to register a complaint?**A: A user asked this, but no solution was provided in the chat [11].
+
+Campus Transport and Local Travel
+**Q: What are the timings for the institute bus?**A: On weekdays, the bus leaves the campus at 5:10 PM, 6:10 PM, and 7:10 PM [12, 13]. On weekends (Saturdays and Sundays), the timings are 11:00 AM, 2:00 PM, 5:00 PM, and 6:10 PM [12, 13].
+**Q: Where and when does the institute bus pick up students returning from Phase 10/11?**A: The bus picks up students in front of the Lecture Hall Complex (LHC) around 6:10 PM and 7:10 PM [14].
+**Q: What are the timings for the airport shuttle?**A: The airport shuttle runs with a 10 to 20-minute gap between trips [15].
+**Q: Can we have cabs (like Uber) pick us up from inside the campus?**A: Yes, cabs can come inside the campus for pickups, but they are not allowed inside between 10:00 PM and 6:00 AM [16].
+**Q: Are cabs or Rapido available from Chandigarh Railway Station to IISER late at night (e.g., 1:00 AM to 3:00 AM)?**A: Yes, travelling between the campus and the station at those hours is generally not an issue [8]. You can pre-book an Uber, or check the community cab-sharing groups to find students arriving around the same time [8, 17].
+**Q: How long does it take to reach Chandigarh Railway Station from the campus?**A: Considering traffic, it takes approximately 1 hour [18].
+**Q: How do I travel from the Chandigarh Airport to campus using local buses?**A: You can catch a local bus just outside the airport, about 20 meters away from the cab pickup area [19]. The ticket costs ₹15, and the travel time is about 10-15 minutes (similar to a cab, depending on traffic) [19]. If the bus stop is empty, make sure to wave your hand to stop the bus [20].
+**Q: How do I travel to Rajpura Junction?**A: You can get frequent buses from the ISBT Sector 43 bus stand [7].
+**Q: How can I check the live schedule or routes of local city buses in Chandigarh/Mohali?**A: You can download the "tricityBUS" app for live schedules [4, 20]. However, the app is sometimes unreliable; the best way to figure out routes is by asking bus commuters at the stops or relying on shared autos, which are highly recommended [20, 21].
+**Q: How do I travel to Delhi using roadways buses?**A: Buses to Delhi are constantly available. You can catch them from Sector 17 (which is safer at night) or Tribune Chowk [22, 23]. AC buses depart almost every 20-30 minutes, and non-AC buses depart every 10 minutes from Tribune Chowk [22].
+**Q: How do I get a bus from Chandigarh to Kalka (or vice versa)?**A: There are many buses traveling between Kalka and Delhi all the time; you can hop on any of them [24].
+**Q: How do I contact the golf cart person for mobility assistance inside the campus?**A: Ask the security guard; they will call the golf cart driver for you [25].
+
+Local Services, Repairs, and Daily Utilities
+**Q: Where can I get my phone or laptop repaired?**A: For phones, "Sonu Mobiles" in Phase 11 (near the Gurudwara) is highly recommended, though you must negotiate to avoid overbilling [4, 11, 26]. For laptops, "Gadget Lab" in Sector 82 is recommended [27]. Sector 20 and Sector 34A also have many retail shops and original HP stores, but finding a trusted one can be difficult [28]. A contact file Phase 11 Laptop Repair.vcf was also shared in the chat [29].
+**Q: Where can I get a broken phone screen protector replaced?**A: You can go to the market building near the Phase 11 auto stop, or visit Gadget Lab in Sector 82 [30, 31].
+**Q: Where can I buy new spectacles or get broken glasses repaired?**A: For buying new glasses, you can visit Lenskart in Sector 82 or Phase 10 [32, 33]. Titan Eye+ in Mohali Citi Centre is another option [34]. For repairs, there is a dedicated shop in Phase 10, and another near CP67 [33]. The stationery shop uncle in Shop C also fixes glasses for ₹100, or for free if you buy frames from him [35].
+**Q: Where can I find a reliable tailor?**A:
+There is a tailor shop inside Shop C [36].
+You can go to the Phase 11 mini market (near the petrol pump) [12, 37].
+There is a tailor who sits with his machine near the Verka booth in Sector 66 [38].
+You can contact Quaisar Uncle IISER.vcf, though he is now mostly busy running the campus juice center [39].
+**Q: Where can I get my bag zip/chain fixed or trolley wheels repaired?**A: Go to the Phase 11 mini market. Any tailor can do it, and if they can't, they will direct you to a bag shop right in front of the mini market [40, 41]. For trolley wheels, there are shops located behind the petrol pump in Phase 11/10 [41].
+**Q: Where can I find a cobbler?**A: There is a cobbler in Phase 11. Walk straight from the petrol pump on the left. Note that he only sits there until about 6:00 PM [42].
+**Q: Where can I get my cycle repaired or buy a cycle lock?**A: There is a cycle repair shop in Phase 11. Take an immediate right after exiting the campus main gate, and it is located next to the bridge [43].
+**Q: Is there an ironing or dry-cleaning service available?**A: An ironing person comes to the H7 washing machine area daily between 5:00 PM and 7:00 PM [39, 44]. For dry-cleaning, "Laundry baba" offers a pickup and drop service that charges ₹150 per article [45].
+**Q: Where can I find a key maker to get a spare key made or a lock broken?**A: There is a key maker in Phase 11, located next to the cycle repair shop [37]. (Note: The community warned against a key maker near the garage in Phase 11, stating their keys often don't work [46]).
+**Q: Where can I get a cooler main motor repaired?**A: You can contact Er. Arun Pal using the shared contact Er.Arun pal.vcf. His shop is in Jagatpura (reachable via a ₹10 auto ride on the same path as Phase 11), which is recommended as good and cheap [21, 37].
+**Q: Where can I get a badminton racket stringed?**A: Go to "Sunlight sports" in Sector 70 [40].
+**Q: Are there any good salons for a haircut?**A: Phase 11 has many hair salons [4]. It is highly advised to always ask the price before getting a haircut [4]. The barber shop that used to be inside Shop C is permanently closed [47].
+**Q: Where can I get thick books printed and spiral bound, or A0 posters printed?**A: You can get spiral binding done at Shop C [48]. For printing very thick books (e.g., 2000 pages) with proper binding, or for printing A0 posters, you should go to Azad Hind Stores (walking distance from campus) [5, 48, 49] or Printster [48, 50].
+**Q: Where can I get photos printed and framed?**A: You can visit Capital Graphics in Sector 17. For a closer option, there is a shop in Phase 11, opposite the Mandir [12].
+**Q: Is there an affordable Tiffin service nearby?**A: Yes, "Rajni Dogra Didi Tiffin" delivers lunch every day. Her contact Rajni Dogra Didi Tiffin.vcf was shared in the group [51].
+**Q: Where can I buy artificial metal jewellery or get a broken bracelet fixed?**A: You can go to the inside market in Phase 11 [10]. Palika Bazaar in Sector 19 (Chandigarh) is another recommended option for buying jewellery [10].
+**Q: Where can I get empty cardboard boxes for packing?**A: You can find empty cartons lying around the backside of the Admin block [52], near the stairs or back part of AB1, and beside the CCD in AB2 [51]. You can also try asking the kabadiwala [37] or the grocery shop in Shop C [51].
+**Q: Where can I buy winter accessories (mufflers, gloves, etc.)?**A: You can buy them in Phase 11 [26].
+**Q: Where can I buy fresh flowers, bouquets, or indoor plants?**A:
+Bouquets/Gifting: There are many florist shops on the route to the 3B2 market [11]. There are also stalls in Phase 11 (opposite the petrol pump) and Phase 10 (behind Pandit chole bhature shop) [53].
+Plants/Pots: There is a flower nursery on the left side of the road heading towards Sector 82, though the community warns that they overcharge (up to 5x rates) [11, 53].
+**Q: Where are the nearest pharmacies, and do any of them deliver to the campus?**A: Nearby pharmacies include ones at the end of the Gupta stationary lane in Phase 11 [54], Ace Pharmacy in Sector 67 [20], and others in Sector 66 and Sector 82 [55]. For door deliveries, you can order from Apollo Pharmacy in Phase 10 [56].
+**Q: Where can I find a screwdriver?**A: You can ask the security guards (e.g., at H5); they usually have one [40].
+**Q: Where can I buy a metal trunk?**A: A user asked if metal trunks are available in Phase 11, but no response was provided [57].
+**Q: Where can I find "nose pliers"?**A: A user asked to borrow nose pliers, but no response was provided [36].
+**Q: Are there any Packers and Movers nearby for transporting instruments?**A: A user asked for a recommendation to transport instruments to Guwahati, but no answer was provided [10].
+**Q: Where can I buy kites, latai, and manjha?**A: A user asked this question, but no response was provided [58].
+
+Library Access, Timings, and Borrowing Rules
+**Q: What are the timings of the library, especially on weekends and during exam weeks?**A: The library usually opens at 9:00 AM or 10:00 AM [1], [2]. On regular Sundays, the timings are 10:00 AM to 1:00 PM, and then 2:00 PM to 5:00 PM or 6:00 PM [1]. The library is locked between 1:00 PM and 2:00 PM on Sundays for a lunch break because only one staff member is on duty [3]. During exam weeks, the library extends its hours until 12:00 AM (midnight) [4], [5], and sometimes remains open all night until 6:00 AM [6], [5].
+**Q: What are the rules and fines for borrowing books from the library?**A: BS-MS students can borrow a maximum of 5 books at a time, while PhD students can borrow up to 7 [7]. Textbooks can be issued for 2 days, after which a fine of ₹20 per day applies [8], [9]. Reference books can be issued for 15 days, with a fine of ₹1 per day for late returns [8], [9]. Note that the automated overdue emails you receive at midnight are just reminders to submit the book by 23:59 that day, not necessarily a fine notice [9].
+**Q: How do I issue books to take home over the summer or winter breaks?**A: You can borrow up to 5 books for the break [10]. While students previously had to email Vaishakhi ma'am, you now just need to go directly to the library counter and ask the staff to issue them as per policy [10].
+**Q: How can I book a discussion room/group study room on the 4th floor of the library?**A: You can simply go to the library and sign the register for the discussion rooms, or ask the staff at the counter for access [11].
+**Q: Is there Wi-Fi or computer access in the library?**A: The MS25 student Wi-Fi has been deactivated in the library [12]. Only the "LIBRARY" Wi-Fi network (iisermlib) works, specifically on the 3rd floor, and the password was sent via email by Sanatan [13]. You can also use the LAN ports on the 4th floor [14] or use the library catalogue computers on the 3rd floor for general computing [6]. The library website is https://library.iisermohali.ac.in/ [15].
+
+Study Rooms and Printing
+**Q: Where can I find study rooms in the hostels, and what are their facilities?**A: Study rooms are located in the older hostels (H5, H6, H7, and H8) [16], [17]. They are open 24/7, fully air-conditioned, and have dedicated Wi-Fi access [18], [17]. Anyone can use them, regardless of which hostel they are allotted to [16].
+**Q: Where can I print thick books, A0 posters, or get spiral binding done?**A: You can bring your own A4 paper to print documents for free at the Computer Centre (CC) until 5:00 PM / 5:30 PM, but bulk printing is not allowed [19], [20], [21]. For thick books (e.g., 2000 pages), spiral binding, or A0 size posters, the community recommends going to Printster, the Shop C stationery shop, or Azad Hind Stores, which is at a walking distance from the campus [22], [18], [23], [24].
+
+ERP Course Registration and Issues
+**Q: What are the login credentials for the ERP portal if I am a fresher?**A: Your username is your registration number with "ms" in lowercase (e.g., ms25xxx). If logging in for the first time, your password is also your exact registration number [25]. If it says invalid, try logging in with the non-IISER email ID you provided during admission, or search your personal email for the initial credential email sent around your registration day [25]. If it still doesn't work, raise a CC ticket for ERP issues or visit the Dean Academics (DAO) office [25].
+**Q: Why are many eligible courses (like DMS major or DCS electives) missing from the ERP registration page?**A: The DAO often does not upload all courses at once [26]. Wait a day or two for the courses to appear. If they still don't show up, you should email the Dean Academics (deanacad@iisermohali.ac.in) or the respective Head of Department (HoD) [26]. Remember that you cannot register for any courses until your academic fee payment is verified on ERP (showing zero pending dues) [26].
+**Q: Can I add a fresh course during the "add/drop" period?**A: No, you cannot make a fresh registration. As per the Dean Academics' email, you can only add a course to replace a dropped course [23].
+**Q: I paid my academic fee via NEFT, but it is not verified on ERP. What should I do?**A: It takes up to a week to get verified [27]. You must download the NEFT challan PDF from the payment options, send it to your bank requesting them to transfer the amount, and then email the transaction ID and details to the DAO or fee@iisermohali.ac.in [27], [28]. You must also submit the details in this Google Form: https://forms.gle/rRCRhfwVJfU3NWbA7 [28], [29].
+
+Grading, Exams, and AI Policies
+**Q: How does taking a medical leave affect grading for missed labs, mid-sems, or end-sems?**A:
+Labs: A chemistry lab is graded 70% for sessions and 30% for the end-sem [30]. If you miss a lab without a sanctioned medical leave, you get zero marks for that experiment because you have no lab record [30]. With an approved leave, no marks are deducted [30].
+Mid-sems and Quizzes: If you miss mid-sems or surprise quizzes, you will not be awarded zero if your medical leave is approved. The policy is professor-specific; they might retake the exam or use a pro-rata formula (scaling other marks to 100 or giving average marks) [31], [32].
+End-sems: If you miss an end-sem for medical reasons, you are given an 'I' (Incomplete) grade [33]. If you do not clear it via a retest or summer semester, it turns into an 'F' [33]. Missing without medical reasons automatically results in an 'F' [33].
+**Q: Can I retake a course to upgrade a 'D' grade?**A: No, you cannot retake an exam just for grade upgradation [34]. You could hypothetically request the professor to fail you ('F' grade) so you can retake it, but this is highly not recommended, and some professors will decline [34].
+**Q: How do you clear an 'F' grade in an IDC course?**A: You cannot clear an 'F' grade in an IDC course; you carry it permanently on your record [35].
+**Q: What is the policy on using AI tools (like ChatGPT) for IDC101 (Python)?**A: The instructor, Kr Shamsundar, has explicitly stated that using AI to complete graded assignments is prohibited and will result in academic disciplinary action [36]. However, the community heavily advises using AI tools like ChatGPT, Perplexity, or Gemini to learn basic coding concepts, understand the assignment logic, and learn the syntax, as long as you write the final code yourself [37], [38].
+**Q: How can I unofficially check my grades before the official release?**A: The ERP backend sometimes uploads grades before the official release (and pulls them down right before publishing) [1]. You can extract them unofficially using the community tool: https://iiserm.github.io/grade-extractor/ [39], [40].
+
+Course Management: Overloads, Minors, and BS Exit
+**Q: What is a course overload and who is eligible?**A: An overload allows you to take one extra course beyond the standard structure to complete your credits early (often to free up time for your thesis) [41]. You can take overloads in your 5th, 6th, 8th, and 9th semesters, but you cannot take any NPTEL courses (overload or otherwise) in your 10th semester [42], [43], [41]. You must have a CPI of > 7.5 to overload [43]. You are allowed to take overloads in consecutive semesters [42].
+**Q: What are the credit requirements for a Minor?**A: For an Astronomy minor, you need 3 Physics courses and 4 Astro courses [44]. For an HSS minor, you must complete 4 courses separate from the 2 mandatory HSS courses [44].
+**Q: Do I need to declare my intention for a 3-year BS exit?**A: Yes, you must inform the administration before your 6th semester, because a BS exit requires you to take specific overloads to meet graduation credits [45].
+
+Internships and NOCs
+**Q: How do I register my summer internship on ERP if the deadline has passed?**A: Even if the deadline is over, you can request the DAO to register it from their side, provided you have a local guide [46], [39]. To register, download the registration form from ERP, sign it, and upload the PDF [46]. The document required for the "attachment" section is usually the internship invitation letter [47].
+**Q: Does it matter if my actual internship title changes from what I registered on ERP?**A: No. The title on ERP is just a DAO record (often just a copy-paste of your request email). Your final project report and certificate will use your actual title [40].
+**Q: Do I need a No Objection Certificate (NOC) for internships outside IISER Mohali?**A: An NOC is only required if the host institute demands it (usually for hostel accommodation) [48]. If you are arranging your own accommodation outside the host institute, you generally do not need one [48].
+**Q: How do I apply for an NOC and is there a fee?**A: You must fill out the NOC Google Form and upload a screenshot of the professor's email or the info letter as proof of why you need it [48]. Collect the NOC from the DAO after 5 working days [48], [49]. The first copy per semester is issued free of charge; subsequent or urgent copies require a ₹100 fee [49].
+
+Certificates, Transcripts, and Research Access
+**Q: How do I get a Bonafide Certificate?**A: You need to fill out the Academic Documents Google Form (https://forms.gle/kvoqCCdRmTDftJAu8 or https://docs.google.com/forms/d/e/1FAIpQLSdysDx4gyEs18GdhFoa5qgVn6lYb20vGE7PKHC0EFlbmvf9Ew/viewform?usp=sf_link) [50], [51]. After filling it, submit a handwritten request detailing the documents to the Dean Academics office and collect it in 3-4 working days [22]. Alternatively, get the physical form from the Dean Students office and submit it with a copy of your Aadhar card [52].
+**Q: How can I get a soft copy of my official transcript urgently?**A: Email the Dean Academics (deanacad@iisermohali.ac.in) [9]. They will send you a payment link for ₹100. Once you pay and show them the screenshot, they will provide the soft copy [9]. Note: Do not use digital APAAR marksheets for official applications, as screening processes require the DAO stamp, signature, and generation date [53].
+**Q: How do I access research papers if I am off-campus or the institute IP isn't working?**A: You can email the library to request access without the institute IP [54]. Alternatively, you can search for the papers on Anna's Archive (https://annas-archive.org/), Z-Library, Project Gutenberg, or Sci-Hub (https://www.sci-hub.cat/) [11], [55], [53]. If all else fails, you can email the author of the paper directly [54].
+**Q: Does the institute provide access to software like Mathematica, MATLAB, or Grammarly Pro?**A: Yes. For Mathematica, email headcc@iisermohali.ac.in [56]. For MATLAB, sign in using your institute email ID [10]. For Grammarly Pro and Turnitin, email the librarian (Sonam: sonamrigzin@iisermohali.ac.in); access is usually granted within one working day [57], [58]. The institute email does not natively give Canva Premium, but you can apply for it via the academic secretary [47].
+
+Eateries, Canteens, and Mess
+**Q: When do the various campus canteens and eateries open and close?**A: The timings are as follows:
+H7 Canteen: Opens around 10:00 AM [1, 2].
+H6 Canteen: Open from 10:00 PM to 1:00 AM [3-5].
+SRM Canteen: Opens around 3:30 PM to 4:00 PM [6].
+Rajasthani Restaurant: Usually opens in the morning between 10:00 AM and 10:30 AM [7, 8].
+Juice Centre: Stays open until 11:30 PM [9].
+Amul Shop: Opens around 8:40 PM and stays open until 11:00 PM [10, 11].
+Night Canteen: Open until 3:00 AM [5].
+**Q: Is the Bengali shop in Shop C still open?**A: No, the Bengali shop is permanently closed, and the partition between the kitchen and eatery has been removed [12]. The Rajasthani restaurant is expected to take its place [12].
+**Q: How do I apply for a mess leave?**A: You can apply for mess leave using the Insight app (com.IISERM.insight) [13]. Alternatively, you can fill out the Google Form link provided by SRM via email: https://forms.gle/W3khvvvV32hCUsSGA [14].
+**Q: Where can I get authentic South Indian food or other specific dishes outside campus?**A: For authentic South Indian food (like Onam sadhya dishes, ragi mudde, etc.), Karthiks and Mallus Kitchen in Sector 47 are recommended, and Mallus Kitchen even delivers to IISER daily [15]. For Burmese food, try Burma Burma in Elante or Brumus in Phase 7 [16].
+
+Campus Stores (Shop C)
+**Q: What are the timings for the shops in the Shopping Complex (Shop C)?**A: The grocery store generally opens around 10:00 AM and closes at 10:00 PM [17, 18]. The stationery shop opens in the morning around 10:00 AM [2, 19], but another user mentioned it operates in the evening from 5:00 PM to 9:00 PM, usually opening around 5:30 PM [20].
+**Q: What services does the stationery shop uncle provide?**A: You can get chart paper, printouts, and passport-size photos there [19, 21]. He also helps send speed posts, parcels, and letters for a fee [22, 23]. You can contact him using the file Pradeep Tripathi SC 3.vcf [13].
+**Q: What are the printing costs at Shop C, and is there an alternative?**A: The stationery shop charges ₹3 for black and white prints and ₹10 for colour prints [24]. However, the shopkeeper sometimes arbitrarily charges ₹20 per page for colour printouts, especially if images are large [19]. For free printing (but not in bulk), you can bring your own A4 paper to the Computer Centre (CC) [19, 25]. You can also give pages to the hostel caretaker's office to get printouts [26].
+
+Hostel Living and Maintenance
+**Q: Where can I find free washing machines and how do they work?**A: There is a free washing machine in H8, but they frequently malfunction [25, 27]. For the Haier machines, you can book twice in 24 hours using the same account, and they cost ₹11 [19, 28]. A mix-mode wash takes around 3 hours, but you can stop it early (your clothes will stay wet) [25]. Alternatively, for cotton mode, set it to 1200 rpm [25].
+**Q: Are there ironing or dry washing services available?**A: An ironing person comes to the hostels between 5:00 PM and 7:00 PM [20, 29]. There is also a person who sits in the H7 washing machine area [30]. For dry washing, "Laundry baba" provides pick-up and drop services for ₹150 per article [31, 32].
+**Q: What should I do if I am locked out of my room or lose my almirah keys?**A: If you lock your keys inside, the hostel caretaker or warden has spare keys [33]. If you lose a lock's key, the caretaker can arrange a worker or provide a hammer to break it [19, 34]. Using a fire extinguisher also works to break locks, but stones do not [19].
+**Q: How do I handle a wasp hive or a dead pigeon in my balcony?**A: For wasps, you can notify the caretaker [1]. Alternatively, the smell of kerosene in a glass placed near the nest incapacitates them in minutes, or you can use Kaala HIT spray [1, 35]. If there is a pigeon or bird, remove it immediately to prevent bad smells and disease spread [36].
+**Q: Do I need to pay extra fees to keep a water cooler in my room?**A: No extra fees or documentation are required to keep a water cooler [30]. Be cautious drinking from the AB2 water coolers, as there have been rumored cases of jaundice from hostel coolers [37, 38].
+**Q: What do I do if the Go Grab vending machine gets stuck?**A: Scan the QR code on the machine to reach their WhatsApp help number and provide a payment screenshot [29, 39]. Shaking the machine does not always work, but they usually refund the amount automatically or within 10-20 minutes [29, 39].
+
+Campus Transport and Navigation
+**Q: What are the timings for the institute bus and airport shuttle?**A: The institute bus runs on weekdays at 5:10 PM, 6:10 PM, and 7:10 PM [40]. On weekends, it runs at 11:00 AM, 2:00 PM, 5:00 PM, and 6:10 PM [19, 40, 41]. For returning from Phase 10/11, the bus picks up in front of the Lecture Hall Complex (LHC) around 6:10 PM and 7:10 PM [42]. The airport shuttle runs with a 10 to 20-minute gap [3]. You can also catch a local bus right outside the airport for ₹15, which takes 10-15 minutes to reach IISER [43].
+**Q: How do I find specific locations inside the campus?**A:
+STM Lab (Dr. Goutam Sheet's Lab): Located behind AB1. Go along the round path behind AB1; it is opposite the liquid nitrogen storage with parking alongside [27, 33].
+NKN Classroom: Located in LH6, in front of the foyer [44].
+CAF (Central Analytical Facility): Located opposite the admin building [45].
+New Basketball Court (BBC): Located to the right of the open gym, which is right of the sports ground [37].
+Tulsi Plant: In front of CAF [45].
+Aloe Vera: Check the 2nd floor of H6 or other hostels [46].
+**Q: Who controls the sports court lights?**A: The basketball court lights are centralised. If they turn off, you must either tell the security guard or come back later [47].
+**Q: Where can I find empty cardboard boxes for packing?**A: You can find empty cartons on the backside of the admin building, behind AB1, beside the CCD in AB2, or by asking the grocery shop/kabadiwala [35, 43, 48, 49].
+**Q: Is there a weighing machine available on campus?**A: Yes, there is one in the Health Centre, or you might be allowed to use the one at the grocery shop in the shopping complex [50].
+
+Post, Courier, Deliveries, and Banking
+**Q: What address should I use for Amazon, Myntra, or other online deliveries?**A: Use "H7 parking, IISER Mohali, Sector 81, Mohali, Punjab". Deliveries are brought to the H7 parking area [44, 51, 52]. Cabs can pick you up inside the campus, but parcel deliveries stay at H7 parking [44, 53].
+**Q: Where is the nearest Post Office?**A: The nearest options are the NIPER Post Office (which has a separate gate just ahead of the main gate) and the Chilla Village Post Office [21, 31, 54, 55]. The Aerocity PO is also an option but requires changing two autos [55].
+**Q: Where is the nearest Canara Bank and SBI?**A: The campus Canara Bank operates from 10:00 AM to 4:00 PM (or 3:30 PM), with a lunch break from 1:30 PM to 2:30 PM (or 1:00 PM to 2:00 PM) [35, 56]. The nearest SBI branch and ATM are in Sector 82 [57].
+
+Repairs and Local Services
+**Q: Where can I get my phone or laptop repaired?**A: For phones, "Sonu Mobiles" in Phase 11 near the Gurudwara is recommended [25, 57]. For laptops, "Gadget Lab" in Sector 82 is recommended [49, 58, 59]. Alternatively, there are original HP shops and retail stores in Sector 20 or 34A [60]. A contact Phase 11 Laptop Repair.vcf was also shared [59].
+**Q: Where can I get my spectacles repaired or buy new ones?**A: For buying, Lenskart in Sector 82 or Phase 10, or Titan Eye+ in Mohali Citi Centre [61-63]. A shop in Phase 10 does repairs [63]. The Shop C stationery uncle also does minor glasses repairs for ₹100, or free if you buy glasses from him [62].
+**Q: Where can I get watches, bags, coolers, or cycles repaired?**A:
+Watches: Verma watches in Phase 10 [64]. For silicon straps, there is a shop in Phase 11 behind the petrol pump [4].
+Bag chains/zips and Suitcases: Phase 11 mini market or the bag shop in front of it [56, 65]. There are also shops behind the petrol pump in Phase 10/11 for trolley wheels [66].
+Coolers: Contact Er. Arun Pal (Er.Arun pal.vcf) [56].
+Cycles: In Phase 11, next to the bridge, taking an immediate right after exiting the campus gate [4].
+Cobbler: In Phase 11, straight from the petrol pump on the left, available until 6:30 PM [67].
+**Q: Can you recommend a good salon or barber?**A: Phase 11 has many hair salons, but always ask the price before getting a haircut [25]. The barber shop inside Shop C is no longer open [68].
+**Q: Where can I get badminton rackets stringed?**A: Sunlight sports in Sector 70 [65].
+
+Visitor's Hostel (VH) Booking
+**Q: What is the procedure and cost to book a room in the Visitor's Hostel?**A: You must send an email to visitorhostel@iisermohali.ac.in and cc deanstudents@iisermohali.ac.in, mentioning the check-in/out times and the number of persons staying [39, 69, 70]. The price is ₹900 per day for both single and double bed rooms [48, 70]. Siblings and cousins are only allowed to stay if they are accompanied by parents [50].
+
+Gate Passes and Campus Exit/Entry Procedures
+**Q: Do I need a gate pass to leave the campus for the weekend or holidays, and where do I get it?**A: Yes, you need a gate pass [1, 2]. You can get it from any available hostel caretaker's office (most preferably H6 and H8) [2].
+**Q: How far in advance should I get a gate pass, and what if I am leaving late at night or early morning?**A: You can get it the same day, just 4-5 hours or a day before you leave [2, 3]. If you are leaving early morning (e.g., 3 AM), you can get it from the night caretaker the night before [3]. The night caretaker's shift starts at 9:00 PM, so anytime after 9:00 PM (preferably between 10:00 PM and 12:00 AM) is fine, but you should call them first [3].
+**Q: Are freshers allowed to go out past 10 PM using a gate pass?**A: If a gate pass is issued, yes [4]. However, caretakers generally only issue gate passes to freshers for home visits [4]. The standard entry timing for first-year students is 6:00 AM to 10:00 PM, while for other batches, it is 6:00 AM to 12:00 AM [5].
+**Q: What should I do if I forget my gate pass at the gate or don't have it when returning to campus?**A: This will not cause an issue [5, 6]. When you reach the gate, just tell the guards your name and the date/time you left, and they will verify it in their register [5, 6]. It is highly recommended to keep a picture of your gate pass on your phone to make the process smoother [5]. Also, be sure to check that the guards wrote your name correctly when you exited (as misspellings happen) [6].
+**Q: What if I return to campus a day later than the date I wrote on my gate pass?**A: Arriving a day late will not create a problem [7].
+**Q: Do we need gate passes when vacating the campus for the summer?**A: Yes, a gate pass will be given to you after you submit your room keys and empty your room [8].
+
+Institute ID Card Reissue
+**Q: What is the exact procedure to get a new institute ID card if I lost it?**A: You must first file a First Information Report (FIR) / DDR online on the Punjab Police Saanjh portal (https://ppsaanjh.in/) [9-11]. Register on the site, go to "apply online", and file a complaint for a missing article (your institution ID card) [11]. You must pay ₹20 for the FIR and download the receipt (also referred to as the police diary) [9, 11, 12]. Finally, email the Dean of Students (DSO) with the FIR copy attached, and they will issue a new ID [11, 12]. The cost for the new ID card is ₹200 [12].
+**Q: Can I use another document as an ID in the meantime?**A: Yes, your PAN card should work as a valid ID while you wait for the reissue [9, 13].
+
+Bonafide Certificate
+**Q: What is the procedure to get a Bonafide Certificate?**A: You need to fill out a specific Google Form (https://docs.google.com/forms/d/e/1FAIpQLSdysDx4gyEs18GdhFoa5qgVn6lYb20vGE7PKHC0EFlbmvf9Ew/viewform?usp=sf_link or https://forms.gle/kvoqCCdRmTDftJAu8) [14, 15]. After filling it, you may need to submit a handwritten letter detailing the documents to the Dean Academics (DAO) office [16]. It takes 3-4 working days to get signed, after which you can collect it from the DAO office during working hours [14, 16, 17]. Alternatively, you can collect the form directly from the Dean Students office, fill it, and submit it along with a copy of your Aadhar card [18].
+**Q: Can I get my Bonafide Certificate speed-posted to my address if I am not on campus?**A: The community is unsure about speed-posting, but you can email the DAO (deanacad@iisermohali.ac.in) to request a soft copy if you are not present on campus [19].
+
+NOC (No Objection Certificate) for Internships
+**Q: Do I need an NOC for summer internships, and how do I apply for one?**A: You only need an NOC if it is required by the host institute (often needed for their hostel accommodation) [20]. To get one, fill out the NOC Google form, and when it asks for the reason, upload a screenshot of the professor's email or the internship program's info letter [20]. You can collect the NOC from the office after 5 days [20].
+**Q: Do I have to pay to get an NOC?**A: The first copy per semester is issued free of charge [21, 22]. Any subsequent copies or urgent requests require a fee of ₹100 [21, 22].
+
+Transcripts and English Proficiency Certificates
+**Q: Can I use digital APAAR marksheets instead of an official transcript?**A: No, you should not use digital APAAR marksheets for official programs [23]. Most institutes look for the signature/stamp of the Dean Academics and the generation date, which are absent on digital transcripts [23].
+**Q: How can I get a soft copy of my transcript urgently?**A: Mail the Dean Academics (DAO) [24]. They will send you a link to pay ₹100 for an urgent request [24]. Pay the fee, show them the payment screenshot, and they will provide the soft copy [24].
+**Q: How do I get an English Proficiency Certificate?**A: Ask the Dean Academics office, or ask your HSS101 instructor if the specific institute you are applying to requires the certificate to be from a professor [25].
+
+Anti-Ragging Form
+**Q: How do I fill out and submit the mandatory Anti-Ragging Form?**A: As per UGC guidelines, you must fill out the form at https://antiragging.in/affidavit_registration_disclaimer.html [26]. After filling it out on the portal, you will receive a reference ID [26, 27]. Use this ID to download your specific PDF form (which will include your and your parent's names), print it, get your parent's signature, and submit it to Mr. Surinder in the Dean Students office [26, 27].
+
+Administrative Offices (DAO/DSO)
+**Q: Where is the Dean Academics (DAO) office and what are the student visiting hours?**A: The DAO is located in H7 [28]. Student visiting hours are generally 11:00 AM to 12:30 PM, and it is closed for the later half on Saturdays [29]. Another user mentioned it is open after 4:00 PM every day [28]. It remains closed on Sundays [29].
+**Q: What are the email IDs for the Dean Students (DSO) office?**A: The email IDs are deanstudents@iisermohali.ac.in and office_dso@iisermohali.ac.in [15].
+**Q: Who should I contact for NSP scholarship institute verification?**A: Go to the Dean Academics office and contact Sanjay Sir, who handles scholarship verification [30]. His phone number is +918360496995 [31].
+
+Health Centre Timings & Registration
+**Q: When does the Health Centre open and what are its timings?**A: The Health Centre generally opens at 8:30 AM [1]. The working hours are from 9:00 AM to 5:00 PM [2]. Specifically, morning hours are roughly 8:00 AM to 1:30 PM, followed by a lunch break from 1:30 PM to 3:15 PM, and afternoon hours from 3:15 PM to 6:00 PM [3-7]. On Saturdays, it is open from 8:00 AM to 1:30 PM [4]. It remains closed on Sundays and during mid-sem breaks [8-10].
+**Q: Do they ask for your personal phone number for documentation/registration at the Health Centre?**A: No, they typically do not ask for your phone number [11]. They only ask for your institute registration number, your age, and whether you have any allergies to certain medicines [11].
+
+Nurse & Doctor Availability
+**Q: When and where is the nurse available?**A: The nurse comes to the hostels at around 8:00 PM [12, 13]. The nurse's room is located in H5, on the first floor, in the last room of the boys' wing [14].
+**Q: How do I contact the Chief Medical Officer (CMO), Dr. Gurpreet sir?**A: You can email him at gurpreet@iisermohali.ac.in [15] or call him at 9417360233 [16].
+**Q: What are the visiting hours for the paediatrician in the Health Centre?**A: A user asked this question, but no specific timings for a paediatrician were provided in the chat [17].
+
+Medicines & Treatments at the Health Centre
+**Q: Is the person at the reception supposed to give you medicine without consulting a doctor?**A: Yes, if it is a very basic issue like a cold or fever, they usually provide the medicine themselves [18].
+**Q: What specific medicines or treatments can I get at the Health Centre?**A: They provide basic medicines like cough syrups (e.g., Kuffdryl) and tablets (e.g., RemCC, Paracetamol) [19-21]. They sometimes have pain relief ointments like Diclofenac gel (Volini/Moov), but if the gel is out of stock, they provide tablets instead [22, 23]. They offer Tetanus injections and Rabies vaccines (though the Rabies vaccine is only for students and faculty, not parents, and was reported out of stock in October and November) [24-26]. They also have a weighing machine and crepe bandages [27, 28]. They do not have IV drips [13].
+
+Ambulance Service
+**Q: How do I use or contact the institute ambulance?**A: You can contact the H5 guard, reach out to any hostel caretaker, or call the ambulance driver directly using the shared contact file Binderji Ambulance Driver.vcf [29, 30]. Another file shared for ambulance contacts is 2 contacts.vcf [31].
+
+Medical Leave Application Procedure
+**Q: How do I apply for a medical/sick leave?**A: You must fill out the Google Form sent by the Dean Academics (DAO) or SRMC [25, 32-34]. The link to the form is: https://forms.gle/m7KXqgSu66hiEQSv7 [1, 3, 25, 33, 34].
+**Q: What documents are required for the medical leave form?**A: You need to upload a medical certificate or prescription [35-37]. The document must clearly state the number of days you were advised to rest by the doctor [8, 36]. You must submit this certificate/prescription within 1 week of the end day of your absence [35].
+**Q: If I was diagnosed at home/outside the campus and have a clinical medical certificate, is that enough to apply?**A: Yes, a clinical medical certificate stating the rest days is sufficient for the Google Form [8]. While the campus CMO might say it is not "properly routed" through them, submitting it on the form works [19].
+**Q: How long does the DAO take to process/approve medical leave, and what should I do if it takes too long?**A: It takes a minimum of one week, but it can take up to a month or longer (up to 3 months) [37-39]. You will receive an email once it is approved [37]. If exams are approaching and it is not yet approved, you should visit the DAO office politely during student visiting hours to ask them to expedite it [38]. You can also email the specific professors whose exams you missed to explain the situation and forward the approval to them later [38].
+**Q: After my medical leave ends and I return to campus, do I need to report to the Dean?**A: No [2, 40]. You only need to meet your instructors if you want to ask about missed quizzes or attendance records [2].
+**Q: What if I have a medical certificate but my return to campus is a day later than what I wrote on my gate pass?**A: This will not create a problem [36].
+
+Academic Impact of Medical Leave
+**Q: Will I lose marks if I miss a lab class due to illness?**A: If you have a sanctioned medical leave (approved by DAO), marks are generally not deducted [35, 41]. However, without an approved leave, TAs or instructors might deduct marks (e.g., 10 marks in the Chemistry lab) because you have no lab record for that day [35, 41]. Always confirm the attendance and grading policy directly with the course instructor, as policies vary and it is not decided by the TA [35, 41].
+**Q: What happens if I miss surprise quizzes or mid-sem exams due to medical leave?**A: If your medical leave is approved, you will not be awarded zero marks [37]. It depends on the specific professor's policy: they might use a pro-rata formula (scaling your other exam marks to 100 or giving average marks) or ask you to retake the exam [37, 42, 43].
+**Q: Are missed end-sem exams due to medical reasons given an 'I' grade or pro-rata marks?**A: They are given an 'I' (Incomplete) grade [30]. If the course is not cleared by the next semester (either via a retest or summer semester), it turns into an 'F' grade [30]. If you miss the exam and do not present medical reasons, it is automatically marked as an 'F' [30].
+
+Health Insurance & Reimbursements
+**Q: Does the institute health insurance cover OPD expenses like ultrasounds, blood tests, or dental care?**A: The insurance generally only works if you are admitted to a hospital for more than 24 hours [21, 44, 45]. It does not cover dental care [46]. However, you can get CGHS (Central Government Health Scheme) discounted rates for OPD and check-ups at applicable hospitals if you show your institute health ID [47, 48].
+**Q: Can I claim a mediclaim/reimbursement for hospitalization during holidays, and does a digital copy of the health card work?**A: Yes, you can claim reimbursement for hospitalization during holidays, and the digital copy of the card technically works [49].
+**Q: Can I request reimbursement of a hospital fee from IISERM if I go to a nearby hospital because the health centre is closed?**A: You can try to claim insurance or ask for CGHS rates at the hospital, but the mandatory health insurance typically only works if you are admitted for more than 24 hours [8, 44].
+
+Nearby Pharmacies, Hospitals & Doctors
+**Q: Are there any pharmacies nearby, including ones that deliver?**A: There are pharmacies in Sector 66, Sector 82, and Phase 11 (at the end of the Gupta stationary lane) [27, 50, 51]. For door deliveries, you can use Apollo Pharmacy in Phase 10 [50].
+**Q: Which nearby hospitals or specialists does the community recommend?**A:
+Grecian Hospital (Sector 69): Highly recommended by the community over Sohana Hospital [8]. It is recommended for dental check-ups (a lady dentist sits there), ENT specialists, and Gastroenterology (Dr. Rahul Kakkar) [47, 52, 53]. You can use your institute health ID here for lower fees [47].
+Sohana Hospital: An option that is covered under the health insurance network, though Grecian is generally considered better [8, 48].
+General Physician: A Google Maps link was shared for a nearby general physician: https://maps.app.goo.gl/WRS1eEKziw5FKokQA?g_st=aw [54].
+Ultrasound/Lab Reports: You can go to "Ultrasound Near Gurudwara Phase 11" (contacts shared via Ultrasound Near Gurudwara Phase 11 For Lab Report.vcf and Ultrasound Near Gurudwara Phase 11.vcf) or Grecian Hospital [55]. You can also book blood tests via Lal Path Labs [56].
+Dermatologist: For hair-related dermatology, it was asked but no specific doctor was named in the chat [12, 43].
+Orthopaedic / Physiotherapist: Requested by the community but no specific clinic was recommended in the log [50, 57].
+
+Wi-Fi, LAN, and VPN Access
+**Q: Will LAN ports and Wi-Fi be functional in the new hostels (H3/H4)?**A: LAN ports in H4 are currently non-functional [1]. Students were told it would take a minimum of 1-2 months and that LAN ports would start once H3 work is done [2]. Later, it was confirmed that LAN connections have been provided to H3, but H4 will not get them soon [3]. There is no student Wi-Fi in these hostels; students must buy their own personal routers to connect to the LAN port [2]. CC stated that campus Wi-Fi hardware is "end of sale" and "end of support" and is awaiting authority approval to augment the infrastructure, so immediate support is not possible [3, 4].
+**Q: Do I need a UPS for a personal Wi-Fi router in the hostel room?**A: It is not necessarily required; students currently using routers in their rooms do not use a UPS despite voltage fluctuations [5].
+**Q: Where can I get a reliable, no-compromise Wi-Fi/internet connection on campus?**A: You can use the study rooms in the older hostels (H5, H6, H7, H8), which have dedicated Wi-Fi [2, 5]. Anyone can access these hostels (only gender-wise wing restrictions apply) [2]. Alternatively, you can use the LAN ports on the 4th floor of the library [6].
+**Q: Why is the MS25 student Wi-Fi no longer working in the library?**A: The Registration day Wi-Fi was deactivated after living an entire semester (it was only supposed to last 2-4 weeks) [7]. Now, only the "LIBRARY" Wi-Fi (iisermlib) works, specifically on the 3rd floor [8, 9].
+**Q: What is the password and configuration for the student Wi-Fi?**A: The password for the MS2025 network is RiiseRm@81 (case sensitive) [10]. You must also change your proxy to 172.16.2.251 and the proxy port to 3128 [10]. Detailed instructions can be found in this document: https://share.google/7aYCuReDtCp6yDmnH (check point 5) [11].
+**Q: How do I set up a LAN connection on a Mac?**A: You need to configure IPv4 manually [12].
+**Q: How can I access blocked services like the Microsoft Store, Windows Updates, or Linux distro mirrors on the student Wi-Fi?**A: You can bypass these restrictions using Cloudflare WARP or Proxifier [13].
+**Q: How do I get Discord screen sharing to work on the student Wi-Fi, considering Discord doesn't support proxy networks?**A: You need to use a VPN or Cloudflare WARP [14]. Make sure to disable the proxy after connecting to the VPN [14, 15]. Note that UDP will not work with a proxy; it will only work with 8080-8081 TCP ports [14, 15].
+**Q: The Cloudflare VPN app (1.1.1.1) link is broken on Google Play and Windows. How do I configure it?**A: On Windows, the Cloudflare interface icon is hidden in the little arrow menu in the taskbar [2]. On Android, the official Google Play link is malfunctional; you have to download the APK from third-party websites like Softonic or APKMirror [14, 15].
+**Q: How do I request a new Wi-Fi key if I changed my phone?**A: Raise a CC ticket at the IISERM Support Center: https://support.iisermohali.ac.in/ [16].
+
+Computer Centre (CC) and Printing
+**Q: Do I need permission to use a computer in the Computer Centre (CC)? What is the password?**A: No permission is needed [17]. The password to log into the CC computers is "iiser" [17]. You must remember to sign out before you leave [18]. The CC is located on the 2nd floor of the Informatics building (left of the library) [19, 20].
+**Q: What are the timings of the Computer Centre?**A: The CC usually operates from 9:00/9:10 AM to 5:00/5:30 PM [21-23]. It is closed on Sundays [13].
+**Q: Where can I get printouts on campus?**A: You can print at the Computer Centre (CC) if you bring your own A4 size paper, but bulk printing is not allowed [19, 21, 24]. If the CC is closed, you can give your pages to the hostel caretaker's office, go to Shop C, or order via Blinkit [16, 25-27]. For printing and binding thick books, go to Printster or Azad Hind Stores (walking distance from campus) [25, 28, 29].
+**Q: What are the prices for printing at Shop C's stationery shop?**A: Black and white printouts are ₹3 per page, and colour printouts are ₹10 per page [30]. Be aware that the shopkeeper sometimes arbitrarily charges ₹20/page for colour prints if images are large [31, 32].
+
+ERP, Email, and Official Accounts
+**Q: I have forgotten my IISERM email password or was given the wrong one. Who should I approach?**A: You should contact the Computer Centre (CC) to sort this out [18, 33].
+**Q: What are the login credentials for the ERP portal?**A: Your username is your registration number (with "ms" in lowercase, e.g., ms25xxx) [11, 34]. If you are logging in for the first time, your password is also your registration number, which you can change after logging in [11]. If it doesn't work, try using the non-IISER Mohali email ID you provided during admission, or check your personal email for the initial credential mail sent around your registration day [11, 35]. If you still can't log in, raise a CC ticket or visit the Dean Academics (DAO) office [11, 35].
+**Q: I paid my academic fees via NEFT on the ERP, but it is still showing as unverified. What should I do?**A: It takes a few days (up to a week) to get verified on the ERP [12, 36]. You must download the NEFT challan PDF from the portal, send it to your bank with a letter asking them to transfer the amount, and then email the transaction ID/details to the DAO (or fee@iisermohali.ac.in) so they can update the ERP [12, 37, 38]. Finally, submit the details in this Google Form: https://forms.gle/rRCRhfwVJfU3NWbA7 [38, 39].
+**Q: I am trying to register for courses on ERP, but many subjects I am eligible for are missing. What should I do?**A: Mail Dean Academics or the respective HoD [40]. Courses aren't usually made available all at once; wait a day or two and they should appear [40]. Note that you won't be able to register unless your fee payment is verified and updated as zero pending dues [39].
+**Q: I didn't register my summer internship on the ERP before the deadline. Is it an issue?**A: Even if the deadline is technically over, you can request the DAO to register it from their side, provided you have a local guide [41]. You must download the registration form from ERP, sign it, and upload the PDF [36, 42].
+**Q: How do I check my grades on ERP before official release?**A: You can unofficially extract backend ERP grades using this community tool: https://iiserm.github.io/grade-extractor/ [43]. Note that the ERP sometimes pulls results off for a few days right before the official release [44].
+**Q: Is there an email ID for CC electrical tickets?**A: You must raise a ticket on the portal. If they don't respond in a day or two, put a reminder on the same ticket. As a last resort, email the Head CC with your ticket number [45, 46].
+
+Software, Subscriptions, and Research Access
+**Q: How do I access research papers if the institute IP (ONOS subscription) isn't working or I am off-campus?**A: You can email the library asking for access without the institute IP [47]. Alternatively, you can use Anna's Archive, Z-Library, Project Gutenberg, or Sci-Hub (https://www.sci-hub.cat/) [26, 48, 49]. For newer papers not on Sci-Hub, you can email the author directly [10].
+**Q: Does the institute provide access to Mathematica, MATLAB, or Grammarly?**A: Yes. For Mathematica, you must email Head CC to grant you access [50, 51]. For MATLAB, you can simply sign in using your institute email ID [52]. For Grammarly Pro, you must email the librarian (Sonam: sonamrigzin@iisermohali.ac.in) [52-54].
+**Q: Does our institute have a Turnitin subscription and how do I activate it?**A: Yes, email the library (sonamrigzin@iisermohali.ac.in), and it is usually activated within one working day [54-56].
+**Q: Does the institute email ID give access to Canva Premium?**A: No, but you can apply for it, and the academic secretary can grant you access (search your emails for details) [23].
+`;
+
+        // Parse Raw Data Logic
+        const lines = rawData.split('\n');
+        const faqs = [];
+        let currentCategory = "General";
+        let currentQ = "";
+        let currentA = "";
+        let isParsingA = false;
+
+        function pushFaq() {
+            if (currentQ) {
+                // Strip the chat log citation numbers e.g., [1, 2], [30]
+                let cleanA = currentA.replace(/(?:,\s*)?\[[\d,\s-]+\]/g, '').trim();
+                // Strip any leading bullet point breaks created during parsing
+                cleanA = cleanA.replace(/^(<br>\s*•\s*)+/, '');
+                
+                // Convert URLs into clickable links for convenience
+                cleanA = cleanA.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-brand-600 hover:underline break-all font-medium">$1</a>');
+
+                faqs.push({
+                    category: currentCategory,
+                    question: currentQ.replace(/^\*\*Q:\s*/, '').replace(/\*\*/g, '').trim(),
+                    answer: cleanA
+                });
+                currentQ = "";
+                currentA = "";
+                isParsingA = false;
+            }
+        }
+
+        lines.forEach(line => {
+            let trimmed = line.trim();
+            if (!trimmed) return;
+
+            // Check if it's a new question
+            if (trimmed.startsWith('**Q:')) {
+                pushFaq(); // commit previous FAQ to array
+                
+                // Regex checks if Q and A are on the exact same line
+                let match = trimmed.match(/^\*\*Q:\s*(.*?)\*\*\s*A:(.*)$/);
+                if (match) {
+                    currentQ = match[1];
+                    currentA = match[2];
+                    isParsingA = true;
+                } else {
+                    currentQ = trimmed;
+                    isParsingA = false;
+                }
+            } 
+            // Check if answer starts on a new line
+            else if (trimmed.startsWith('A:')) {
+                isParsingA = true;
+                currentA += " " + trimmed.replace(/^A:\s*/, '');
+            } 
+            // Append continuation of an answer (handles multi-line list answers)
+            else if (isParsingA) {
+                currentA += "<br><span class='ml-4 block mt-1'>• " + trimmed + "</span>";
+            } 
+            // If it's none of the above, it's a Category Header!
+            else {
+                currentCategory = trimmed;
+            }
+        });
+        pushFaq(); // commit the very last item
+
+        // Render UI dynamically
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Accordion Logic
-            const accordionBtns = document.querySelectorAll('.faq-btn');
             
+            // Group the parsed FAQs by Category
+            const groupedFaqs = faqs.reduce((acc, faq) => {
+                if (!acc[faq.category]) acc[faq.category] = [];
+                acc[faq.category].push(faq);
+                return acc;
+            }, {});
+
+            const sidebar = document.getElementById('toc-menu');
+            const container = document.getElementById('faq-container');
+
+            // Generate HTML for each Category
+            Object.keys(groupedFaqs).forEach((category, index) => {
+                const catId = 'cat-' + index;
+
+                // 1. Add sidebar link
+                const link = document.createElement('a');
+                link.href = '#' + catId;
+                link.className = 'block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors text-sm font-medium';
+                link.textContent = category;
+                sidebar.appendChild(link);
+
+                // 2. Build Category Section
+                const section = document.createElement('section');
+                section.id = catId;
+                section.className = 'faq-section scroll-mt-24';
+
+                const headerHtml = `
+                    <div class="mb-4 border-b border-slate-200 pb-2">
+                        <h2 class="text-2xl font-bold text-slate-800">${category}</h2>
+                    </div>
+                    <div class="space-y-3">
+                `;
+
+                // 3. Build Items within Section
+                const itemsHtml = groupedFaqs[category].map(faq => `
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg">
+                            <span class="pr-4 leading-tight">${faq.question}</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed border-t border-slate-50 mt-2 pt-2">
+                                ${faq.answer}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                section.innerHTML = headerHtml + itemsHtml + '</div>';
+                container.appendChild(section);
+            });
+
+            // Initialize Event Listeners
+            initAccordions();
+            initSearch();
+            initScrollSpy();
+        });
+
+        // Toggle Accordions
+        function initAccordions() {
+            const accordionBtns = document.querySelectorAll('.faq-btn');
             accordionBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const content = this.nextElementSibling;
                     const icon = this.querySelector('svg');
-                    
-                    // Toggle Active state
                     content.classList.toggle('expanded');
                     icon.classList.toggle('rotate-180');
-                    
-                    // Optionally close others (uncomment to make it exclusive)
-                    /*
-                    accordionBtns.forEach(otherBtn => {
-                        if (otherBtn !== this) {
-                            otherBtn.nextElementSibling.classList.remove('expanded');
-                            otherBtn.querySelector('svg').classList.remove('rotate-180');
-                        }
-                    });
-                    */
                 });
             });
+        }
 
-            // 2. Search Functionality
+        // Live Search Filter
+        function initSearch() {
             const searchInput = document.getElementById('searchInput');
             const sections = document.querySelectorAll('.faq-section');
             const noResultsMsg = document.getElementById('no-results');
@@ -662,15 +550,17 @@
                         }
                     });
 
-                    // Hide/Show section header based on items
                     section.style.display = sectionHasVisibleItem ? 'block' : 'none';
                 });
 
                 noResultsMsg.style.display = totalVisibleItems === 0 ? 'block' : 'none';
             });
+        }
 
-            // 3. Highlight TOC on Scroll
+        // Highlight TOC Sidebar on Scroll
+        function initScrollSpy() {
             const tocLinks = document.querySelectorAll('#toc-menu a');
+            const sections = document.querySelectorAll('.faq-section');
             
             const observerOptions = {
                 root: null,
@@ -683,9 +573,9 @@
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
                         tocLinks.forEach(link => {
-                            link.classList.remove('text-brand-700', 'bg-brand-50', 'font-semibold');
+                            link.classList.remove('text-brand-700', 'bg-brand-100', 'font-bold');
                             if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('text-brand-700', 'bg-brand-50', 'font-semibold');
+                                link.classList.add('text-brand-700', 'bg-brand-100', 'font-bold');
                             }
                         });
                     }
@@ -693,7 +583,7 @@
             }, observerOptions);
 
             sections.forEach(section => observer.observe(section));
-        });
+        }
     </script>
 </body>
 </html>
