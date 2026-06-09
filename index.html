@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IISER Mohali Survival Guide</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.expanded {
+            max-height: 1000px; /* Arbitrary large height */
+            opacity: 1;
+        }
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- Header / Navbar -->
+    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between py-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <!-- Academic Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
+                    </svg>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">IISER Mohali Junior Guide</h1>
+                </div>
+                <div class="w-full md:w-1/3 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search FAQs..." class="w-full bg-slate-800 text-white placeholder-slate-400 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Navigation (Table of Contents) -->
+        <aside class="w-full md:w-1/4 hidden md:block">
+            <div class="sticky top-28 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Table of Contents</h3>
+                <nav class="space-y-2 text-sm font-medium" id="toc-menu">
+                    <a href="#deliveries" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Deliveries & Transport</a>
+                    <a href="#academics" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Academics & Library</a>
+                    <a href="#facilities" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Campus Facilities</a>
+                    <a href="#admin" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Administrative Procedures</a>
+                    <a href="#medical" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">Medical & Sick Leave</a>
+                    <a href="#it" class="block py-2 px-3 rounded-md text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-colors">IT & Network Systems</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content (FAQs) -->
+        <main class="w-full md:w-3/4 space-y-12 pb-20" id="faq-container">
+            
+            <!-- SECTION 1 -->
+            <section id="deliveries" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Deliveries, Transport, and Local Services</h2>
+                    <p class="text-slate-500 text-sm mt-1">Everything you need to know about getting around and getting things delivered.</p>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-6">Deliveries, Post, and Couriers</h3>
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What address should I use for Amazon, Myntra, or other online deliveries?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                You should use the address: "H7 parking, IISER Mohali, Sector 81, Mohali, Punjab". Deliveries are brought to the H7 parking area, and the delivery person will call you when they arrive.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What if I am not physically available to collect my Amazon parcel?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Delivery will simply be attempted again the next day. Amazon delivery agents generally come once in the morning and once in the evening.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where is the nearest Post Office to send speed posts and parcels?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The most recommended nearest option is the NIPER Post Office, which has a separate gate just ahead of the main campus gate. The Chilla Village Post Office is another walkable option. The Aerocity Post Office is also nearby in terms of distance, but it requires changing autos twice and a 3-minute walk.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Is there an alternative way to send letters or small parcels without going outside?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Yes, the stationery shop uncle in Shop C helps send speed posts, parcels, letters, and documents for a fee. Alternatively, the regular postman usually comes to the H7 parking area around 12:00 PM daily (excluding public holidays); you can hand your envelope directly to him.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Which courier services provide doorstep pickup from the campus?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Delhivery provides doorstep pickup services from the campus.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-8">Campus Transport and Local Travel</h3>
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What are the timings for the institute bus?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                On weekdays, the bus leaves the campus at 5:10 PM, 6:10 PM, and 7:10 PM. On weekends (Saturdays and Sundays), the timings are 11:00 AM, 2:00 PM, 5:00 PM, and 6:10 PM. The bus picks up students returning from Phase 10/11 in front of the Lecture Hall Complex (LHC) around 6:10 PM and 7:10 PM.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Can we have cabs (like Uber) pick us up from inside the campus?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Yes, cabs can come inside the campus for pickups, but they are not allowed inside between 10:00 PM and 6:00 AM.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Are cabs or Rapido available from Chandigarh Railway Station late at night?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Yes, travelling between the campus and the station at those hours (1:00 AM - 3:00 AM) is generally not an issue. You can pre-book an Uber, or check the community cab-sharing groups to find students arriving around the same time. It takes approximately 1 hour considering traffic.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How do I travel to Delhi using roadways buses?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Buses to Delhi are constantly available. You can catch them from Sector 17 (which is safer at night) or Tribune Chowk. AC buses depart almost every 20-30 minutes, and non-AC buses depart every 10 minutes from Tribune Chowk.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold text-brand-600 mb-4 mt-8">Local Services, Repairs, and Daily Utilities</h3>
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I get my phone or laptop repaired?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                For phones, "Sonu Mobiles" in Phase 11 (near the Gurudwara) is highly recommended, though negotiate to avoid overbilling. For laptops, "Gadget Lab" in Sector 82 is recommended. Sector 20 and Sector 34A also have many retail shops and original HP stores.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I buy new spectacles or get broken glasses repaired?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Visit Lenskart in Sector 82 or Phase 10, or Titan Eye+ in Mohali Citi Centre. For repairs, there is a dedicated shop in Phase 10, and another near CP67. The stationery shop uncle in Shop C also fixes glasses for ₹100.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I find a reliable tailor, bag repair, or cobbler?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                <strong>Tailor:</strong> Shop C, Phase 11 mini market, or near the Verka booth in Sector 66.<br>
+                                <strong>Bags/Trolleys:</strong> Phase 11 mini market or shops behind the petrol pump in Phase 11/10.<br>
+                                <strong>Cobbler:</strong> Phase 11, walk straight from the petrol pump on the left (sits until 6:00 PM).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I get thick books printed and spiral bound, or A0 posters printed?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Spiral binding is done at Shop C. For printing very thick books (e.g., 2000 pages) with proper binding or A0 posters, go to Azad Hind Stores (walking distance from campus) or Printster.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <section id="academics" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Academic and Library Handbook</h2>
+                    <p class="text-slate-500 text-sm mt-1">Rules regarding the library, courses, ERP, grades, and academic policies.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What are the timings of the library, especially on weekends and exam weeks?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The library usually opens at 9:00 AM or 10:00 AM. On regular Sundays, it's 10:00 AM - 1:00 PM, locked for lunch, then 2:00 PM - 6:00 PM. During exam weeks, hours extend until midnight (12:00 AM) and sometimes remain open all night until 6:00 AM.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What are the rules and fines for borrowing books from the library?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                BS-MS students can borrow a max of 5 books; PhD students can borrow 7. Textbooks issue for 2 days (₹20/day fine). Reference books issue for 15 days (₹1/day fine). Automated midnight emails are just reminders to submit by 23:59 that day.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What are the login credentials for the ERP portal if I am a fresher?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Your username is your registration number with "ms" in lowercase (e.g., ms25xxx). For the first login, your password is also your exact registration number. If invalid, try your personal email provided during admission, or raise a CC ticket.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How does taking a medical leave affect grading for missed exams or labs?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                <strong>Labs:</strong> With an approved leave, no marks are deducted. Without it, you get zero for that experiment. <br>
+                                <strong>Mid-sems:</strong> You will not be awarded zero. It depends on the professor (retest or pro-rata formula). <br>
+                                <strong>End-sems:</strong> Missed with medical reasons yields an 'I' (Incomplete) grade, clearable via retest. Without medical reasons, it yields an 'F'.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What is a course overload and who is eligible?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                It allows you to take one extra course beyond the standard structure to complete credits early. You need a CPI > 7.5. Available in 5th, 6th, 8th, and 9th semesters (not allowed in 10th).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Do I need a No Objection Certificate (NOC) for internships outside IISER?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Only if the host institute demands it (usually for hostel accommodation). Apply via the NOC Google Form, providing proof. The first copy per semester is free; subsequent copies are ₹100.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What is the policy on using AI tools (like ChatGPT) for IDC101 (Python)?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Using AI to complete graded assignments is prohibited. However, using it to learn basic coding concepts, logic, and syntax is heavily advised by the community, as long as you write the final code yourself.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <section id="facilities" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Campus Facilities and Daily Amenities</h2>
+                    <p class="text-slate-500 text-sm mt-1">Eateries, shops, hostel living, and finding your way around.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>When do the various campus canteens and eateries open and close?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>H7 Canteen: Opens around 10:00 AM</li>
+                                    <li>H6 Canteen: 10:00 PM to 1:00 AM</li>
+                                    <li>SRM Canteen: Opens 3:30 PM to 4:00 PM</li>
+                                    <li>Rajasthani Restaurant: Opens 10:00 AM to 10:30 AM</li>
+                                    <li>Juice Centre: Stays open until 11:30 PM</li>
+                                    <li>Amul Shop: Opens ~8:40 PM until 11:00 PM</li>
+                                    <li>Night Canteen: Open until 3:00 AM</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I find free washing machines and how do they work?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                There is a free machine in H8 (frequently malfunctions). Haier machines cost ₹11 and can be booked twice in 24 hours. A mix-mode wash takes ~3 hours.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What should I do if I am locked out of my room or lose keys?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The hostel caretaker or warden has spare room keys. For lost padlock keys, the caretaker can provide a hammer or arrange a worker.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How do I book a room in the Visitor's Hostel (VH)?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Email visitorhostel@iisermohali.ac.in and cc deanstudents@iisermohali.ac.in, mentioning check-in/out times and number of persons. It costs ₹900/day. Siblings/cousins need to be accompanied by parents.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4 -->
+            <section id="admin" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Student Administrative Procedures</h2>
+                    <p class="text-slate-500 text-sm mt-1">Gate passes, ID cards, certificates, and office hours.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Do I need a gate pass to leave the campus, and how do I get it?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Yes, for weekends or holidays. Get it from any hostel caretaker (preferably H6/H8) 4-5 hours prior. For early morning departures, ask the night caretaker after 9:00 PM. Keep a picture of it in case you lose the paper!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What is the exact procedure to get a new institute ID card if I lost it?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                First, file an online FIR/DDR on the Punjab Police Saanjh portal (costs ₹20). Email the Dean of Students (DSO) with the FIR copy attached. A new ID costs ₹200. You can use your PAN card as a valid ID in the meantime.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How do I get a Bonafide Certificate?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Fill out the Academic Documents Google Form, then submit a handwritten letter to the Dean Academics (DAO) office. It takes 3-4 working days. Alternatively, collect a physical form from the DSO and submit with your Aadhar card copy.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where is the Dean Academics (DAO) office and what are the hours?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The DAO is located in H7. Student visiting hours are generally 11:00 AM to 12:30 PM (closed Saturday afternoons and all day Sunday).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5 -->
+            <section id="medical" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Medical Services and Sick Leave</h2>
+                    <p class="text-slate-500 text-sm mt-1">Health Centre procedures, medical leaves, and nearby hospitals.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>When does the Health Centre open and what are its timings?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Working hours are generally 9:00 AM to 5:00 PM (Morning: 8:00 AM - 1:30 PM, Afternoon: 3:15 PM - 6:00 PM). Saturdays are 8:00 AM to 1:30 PM. It is closed on Sundays and mid-sem breaks.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>When and where is the nurse available in the hostels?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The nurse comes to the hostels around 8:00 PM. The nurse's room is in H5, first floor, last room of the boys' wing.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How do I apply for a medical/sick leave?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Fill out the Medical Leave Google Form sent by DAO/SRMC within 1 week of the end day of your absence. You must upload a medical certificate or prescription that clearly states the number of rest days advised. Clinical certificates from home also work.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Does the institute health insurance cover OPD expenses?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Generally, no. Insurance only works if you are admitted for more than 24 hours. However, showing your institute health ID can get you discounted CGHS rates for OPD at applicable hospitals (like Grecian Hospital).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6 -->
+            <section id="it" class="faq-section scroll-mt-24">
+                <div class="mb-6 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-800">Campus IT and Network Systems</h2>
+                    <p class="text-slate-500 text-sm mt-1">Wi-Fi configuration, Computer Centre, and software access.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>What is the password and configuration for the student Wi-Fi?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The password for the MS2025 network is `RiiseRm@81` (case sensitive). You must set your proxy to `172.16.2.251` and the proxy port to `3128`.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Where can I get a reliable, no-compromise Wi-Fi connection on campus?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                The study rooms in the older hostels (H5, H6, H7, H8) have dedicated Wi-Fi. Alternatively, use the LAN ports on the 4th floor of the library.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How can I access blocked services like Discord sharing or Windows Updates?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Bypass proxy restrictions using a VPN like Cloudflare WARP or Proxifier. Ensure you disable the manual proxy after connecting to the VPN.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>How do I access research papers if the institute IP isn't working?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Email the library requesting off-campus access. Alternatively, the community uses Sci-Hub, Anna's Archive, Z-Library, or simply emails the paper's author directly.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 flex justify-between items-center focus:outline-none">
+                            <span>Does the institute provide access to Mathematica, MATLAB, or Grammarly?</span>
+                            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Yes. For Mathematica, email Head CC. For MATLAB, sign in with your institute email. For Grammarly Pro and Turnitin, email the librarian (Sonam).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Hidden State for Search -->
+            <div id="no-results" class="hidden text-center py-12">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-slate-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-lg font-medium text-slate-600">No matching FAQs found</h3>
+                <p class="text-slate-400 text-sm mt-1">Try tweaking your search terms.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Accordion Logic
+            const accordionBtns = document.querySelectorAll('.faq-btn');
+            
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('svg');
+                    
+                    // Toggle Active state
+                    content.classList.toggle('expanded');
+                    icon.classList.toggle('rotate-180');
+                    
+                    // Optionally close others (uncomment to make it exclusive)
+                    /*
+                    accordionBtns.forEach(otherBtn => {
+                        if (otherBtn !== this) {
+                            otherBtn.nextElementSibling.classList.remove('expanded');
+                            otherBtn.querySelector('svg').classList.remove('rotate-180');
+                        }
+                    });
+                    */
+                });
+            });
+
+            // 2. Search Functionality
+            const searchInput = document.getElementById('searchInput');
+            const sections = document.querySelectorAll('.faq-section');
+            const noResultsMsg = document.getElementById('no-results');
+
+            searchInput.addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase();
+                let totalVisibleItems = 0;
+
+                sections.forEach(section => {
+                    const items = section.querySelectorAll('.faq-item');
+                    let sectionHasVisibleItem = false;
+
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(term)) {
+                            item.style.display = 'block';
+                            sectionHasVisibleItem = true;
+                            totalVisibleItems++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    // Hide/Show section header based on items
+                    section.style.display = sectionHasVisibleItem ? 'block' : 'none';
+                });
+
+                noResultsMsg.style.display = totalVisibleItems === 0 ? 'block' : 'none';
+            });
+
+            // 3. Highlight TOC on Scroll
+            const tocLinks = document.querySelectorAll('#toc-menu a');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        tocLinks.forEach(link => {
+                            link.classList.remove('text-brand-700', 'bg-brand-50', 'font-semibold');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('text-brand-700', 'bg-brand-50', 'font-semibold');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
