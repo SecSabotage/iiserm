@@ -113,10 +113,10 @@
         
         <!-- Sidebar Navigation (Table of Contents) -->
         <aside class="w-full md:w-1/4 hidden md:block">
-            <div class="sticky top-28 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-200">
-                <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Table of Contents</h3>
-                <nav class="space-y-1 text-sm font-medium" id="toc-menu">
-                    <!-- Dynamic TOC will be injected here -->
+            <div class="sticky top-28 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-200 max-h-[calc(100vh-8rem)] overflow-y-auto">
+                <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">Table of Contents</h3>
+                <nav class="space-y-4" id="toc-menu">
+                    <!-- Dynamic Deep Hierarchy TOC will be injected here -->
                 </nav>
             </div>
         </aside>
@@ -132,7 +132,7 @@
                 </button>
             </div>
 
-            <div id="faq-container" class="space-y-12">
+            <div id="faq-container">
                 <!-- Dynamic FAQs will be injected here -->
             </div>
             
@@ -178,7 +178,59 @@
 
     <!-- Live Data Parser and UI Generator -->
     <script>
-        // The raw dataset (meta-text stripped for clean categorization)
+        // Data Structure Mapping
+        const documentStructure = {
+            "IISER Mohali Campus Deliveries, Transport, and Local Services Guide": [
+                "Deliveries, Post, and Couriers",
+                "Campus Transport and Local Travel",
+                "Local Services, Repairs, and Daily Utilities"
+            ],
+            "IISER Mohali Academic and Library Handbook": [
+                "Library Access, Timings, and Borrowing Rules",
+                "Study Rooms and Printing",
+                "ERP Course Registration and Issues",
+                "Grading, Exams, and AI Policies",
+                "Course Management: Overloads, Minors, and BS Exit",
+                "Internships and NOCs",
+                "Certificates, Transcripts, and Research Access"
+            ],
+            "IISER Mohali Campus Facilities and Daily Amenities Guide": [
+                "Eateries, Canteens, and Mess",
+                "Campus Stores (Shop C)",
+                "Hostel Living and Maintenance",
+                "Campus Transport and Navigation",
+                "Post, Courier, Deliveries, and Banking",
+                "Repairs and Local Services",
+                "Visitor's Hostel (VH) Booking"
+            ],
+            "IISER Mohali Student Administrative and Campus Procedures Guide": [
+                "Gate Passes and Campus Exit/Entry Procedures",
+                "Institute ID Card Reissue",
+                "Bonafide Certificate",
+                "NOC (No Objection Certificate) for Internships",
+                "Transcripts and English Proficiency Certificates",
+                "Anti-Ragging Form",
+                "Administrative Offices (DAO/DSO)"
+            ],
+            "Student Medical Services and Sick Leave Protocol": [
+                "Health Centre Timings & Registration",
+                "Nurse & Doctor Availability",
+                "Medicines & Treatments at the Health Centre",
+                "Ambulance Service",
+                "Medical Leave Application Procedure",
+                "Academic Impact of Medical Leave",
+                "Health Insurance & Reimbursements",
+                "Nearby Pharmacies, Hospitals & Doctors"
+            ],
+            "IISER Mohali Campus IT and Network Systems Guide": [
+                "Wi-Fi, LAN, and VPN Access",
+                "Computer Centre (CC) and Printing",
+                "ERP, Email, and Official Accounts",
+                "Software, Subscriptions, and Research Access"
+            ]
+        };
+
+        // The raw dataset
         const rawData = `
 Deliveries, Post, and Couriers
 **Q: What address should I use for Amazon, Myntra, or other online deliveries?**A: You should use the address: "H7 parking, IISER Mohali, Sector 81, Mohali, Punjab" [1]. Deliveries are brought to the H7 parking area, and the delivery person will call you when they arrive [1, 2].
@@ -470,12 +522,8 @@ Software, Subscriptions, and Research Access
 
         function pushFaq() {
             if (currentQ) {
-                // Strip the chat log citation numbers e.g., [1, 2], [30]
                 let cleanA = currentA.replace(/(?:,\s*)?\[[\d,\s-]+\]/g, '').trim();
-                // Strip any leading bullet point breaks created during parsing
                 cleanA = cleanA.replace(/^(<br>\s*•\s*)+/, '');
-                
-                // Convert URLs into clickable links
                 cleanA = cleanA.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 hover:underline break-all font-medium transition-colors">$1</a>');
 
                 let cleanQ = currentQ.replace(/^\*\*Q:\s*/, '').replace(/\*\*/g, '').trim();
@@ -520,62 +568,108 @@ Software, Subscriptions, and Research Access
         });
         pushFaq(); 
 
-        // Render UI dynamically
+        // Render UI dynamically based on Map
         document.addEventListener('DOMContentLoaded', () => {
             
-            const groupedFaqs = faqs.reduce((acc, faq) => {
-                if (!acc[faq.category]) acc[faq.category] = [];
-                acc[faq.category].push(faq);
-                return acc;
-            }, {});
-
             const sidebar = document.getElementById('toc-menu');
             const container = document.getElementById('faq-container');
 
-            Object.keys(groupedFaqs).forEach((category, index) => {
-                const catId = 'cat-' + index;
+            // 1. Group faqs by major then minor structure
+            const minorToMajor = {};
+            for (const [major, minors] of Object.entries(documentStructure)) {
+                minors.forEach(minor => minorToMajor[minor] = major);
+            }
 
-                // Sidebar link
-                const link = document.createElement('a');
-                link.href = '#' + catId;
-                link.className = 'block py-2 px-3 rounded-md text-slate-600 dark:text-slate-400 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-700 dark:hover:text-slate-200 transition-colors text-sm font-medium';
-                link.textContent = category;
-                link.setAttribute('data-target', catId);
-                sidebar.appendChild(link);
+            const structuredFaqs = {};
+            Object.keys(documentStructure).forEach(major => {
+                structuredFaqs[major] = {};
+                documentStructure[major].forEach(minor => {
+                    structuredFaqs[major][minor] = [];
+                });
+            });
 
-                // Build Section
-                const section = document.createElement('section');
-                section.id = catId;
-                section.className = 'faq-section scroll-mt-28';
+            faqs.forEach(faq => {
+                const major = minorToMajor[faq.category];
+                if (major && structuredFaqs[major][faq.category]) {
+                    structuredFaqs[major][faq.category].push(faq);
+                }
+            });
 
-                const headerHtml = `
-                    <div class="mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
-                        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">${category}</h2>
-                    </div>
-                    <div class="space-y-3">
+            // 2. Render TOC and Content
+            let catIndex = 0;
+
+            Object.keys(structuredFaqs).forEach(major => {
+                
+                // Add Major Category to TOC
+                const majorToc = document.createElement('div');
+                majorToc.className = 'mt-5 mb-2 font-bold text-slate-800 dark:text-slate-200 text-sm tracking-tight';
+                majorToc.textContent = major;
+                sidebar.appendChild(majorToc);
+
+                const minorList = document.createElement('div');
+                minorList.className = 'pl-2 border-l-2 border-slate-100 dark:border-slate-700/50 space-y-1 mb-2';
+                sidebar.appendChild(minorList);
+
+                // Add Major Category Section to Main Container
+                const majorSection = document.createElement('div');
+                majorSection.className = 'mb-14';
+                majorSection.innerHTML = `
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-brand-900 dark:text-brand-100 mb-8 pb-3 border-b-2 border-brand-100 dark:border-brand-900 leading-tight">${major}</h1>
                 `;
+                container.appendChild(majorSection);
 
-                const itemsHtml = groupedFaqs[category].map(faq => `
-                    <div id="${faq.id}" class="faq-item bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm scroll-mt-28 transition-colors duration-200">
-                        <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 dark:text-slate-200 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg group">
-                            <span class="pr-4 leading-tight">${faq.question}</span>
-                            <div class="flex items-center gap-3">
-                                <span title="Copy link" class="copy-link-btn hidden group-hover:block p-1.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors" data-link="#${faq.id}">
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-                                </span>
-                                <svg class="chevron-icon w-5 h-5 text-slate-400 dark:text-slate-500 transition-transform duration-300 transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-5 pb-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-50 dark:border-slate-700/50 mt-2 pt-2">
-                                ${faq.answer}
+                // Iterate over minor categories
+                Object.keys(structuredFaqs[major]).forEach(minor => {
+                    const faqList = structuredFaqs[major][minor];
+                    if (faqList.length === 0) return; // Skip if no FAQs
+
+                    const catId = 'cat-' + catIndex++;
+
+                    // Add Minor Category to TOC
+                    const link = document.createElement('a');
+                    link.href = '#' + catId;
+                    link.className = 'block py-1.5 px-3 rounded-md text-slate-600 dark:text-slate-400 hover:bg-brand-50 dark:hover:bg-slate-700/50 hover:text-brand-700 dark:hover:text-slate-200 transition-colors text-xs md:text-sm font-medium';
+                    link.textContent = minor;
+                    link.setAttribute('data-target', catId);
+                    minorList.appendChild(link);
+
+                    // Add Minor Category Section to Main Container
+                    const section = document.createElement('section');
+                    section.id = catId;
+                    section.className = 'faq-section scroll-mt-28 mb-10';
+
+                    const headerHtml = `
+                        <div class="mb-5">
+                            <h2 class="text-xl font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-500 hidden sm:block"></span>
+                                ${minor}
+                            </h2>
+                        </div>
+                        <div class="space-y-3">
+                    `;
+
+                    const itemsHtml = faqList.map(faq => `
+                        <div id="${faq.id}" class="faq-item bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm scroll-mt-28 transition-colors duration-200">
+                            <button class="faq-btn w-full text-left px-5 py-4 font-medium text-slate-800 dark:text-slate-200 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg group">
+                                <span class="pr-4 leading-tight">${faq.question}</span>
+                                <div class="flex items-center gap-3">
+                                    <span title="Copy link" class="copy-link-btn hidden group-hover:block p-1.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors" data-link="#${faq.id}">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                                    </span>
+                                    <svg class="chevron-icon w-5 h-5 text-slate-400 dark:text-slate-500 transition-transform duration-300 transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-5 pb-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed border-t border-slate-50 dark:border-slate-700/50 mt-2 pt-2">
+                                    ${faq.answer}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    `).join('');
 
-                section.innerHTML = headerHtml + itemsHtml + '</div>';
-                container.appendChild(section);
+                    section.innerHTML = headerHtml + itemsHtml + '</div>';
+                    majorSection.appendChild(section);
+                });
             });
 
             initThemeToggle();
@@ -713,40 +807,38 @@ Software, Subscriptions, and Research Access
                     });
 
                     section.style.display = sectionHasVisibleItem ? 'block' : 'none';
+                    
+                    // Show/Hide Major Headers based on visibility of their minor sections
+                    const majorSection = section.parentElement;
+                    const visibleMinors = majorSection.querySelectorAll('.faq-section[style="display: block;"]');
+                    if(majorSection.tagName === 'DIV' && majorSection.className.includes('mb-14')) {
+                        majorSection.querySelector('h1').style.display = visibleMinors.length > 0 ? 'block' : 'none';
+                    }
                 });
 
                 noResultsMsg.style.display = totalVisibleItems === 0 ? 'block' : 'none';
+                
                 // Trigger scroll spy re-evaluation
                 window.dispatchEvent(new Event('scroll'));
             });
         }
 
-        // Deterministic ScrollSpy (Fix for TOC bug)
+        // Deterministic ScrollSpy Algorithm
         function initScrollSpyFixed() {
             const tocLinks = document.querySelectorAll('#toc-menu a');
             const sections = document.querySelectorAll('.faq-section');
             
             window.addEventListener('scroll', () => {
                 let currentId = '';
+                // Use a point slightly below the top of the viewport to determine "active" section
+                const scrollPosition = window.scrollY + Math.min(window.innerHeight / 3, 200); 
                 
-                // Find which section is currently active based on viewport position
                 sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    // A section is active if its top is above the middle of screen 
-                    // AND its bottom is below the header
-                    if (rect.top <= 200 && rect.bottom >= 150) {
+                    if (section.offsetTop <= scrollPosition) {
                         currentId = section.id;
                     }
                 });
 
-                // If we scrolled past all sections (e.g. at the bottom disclaimer), highlight the last one
-                if (!currentId && sections.length > 0) {
-                    const lastSection = sections[sections.length - 1];
-                    if (lastSection.getBoundingClientRect().top < 0) {
-                        currentId = lastSection.id;
-                    }
-                }
-                
                 // Fallback to first if at the very top
                 if (!currentId && sections.length > 0 && window.scrollY === 0) {
                     currentId = sections[0].id;
@@ -754,13 +846,23 @@ Software, Subscriptions, and Research Access
 
                 tocLinks.forEach(link => {
                     // Reset classes
-                    link.classList.remove('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700');
+                    link.classList.remove('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700/50');
                     link.classList.add('text-slate-600', 'dark:text-slate-400');
                     
                     if (link.getAttribute('data-target') === currentId) {
                         // Apply active classes
                         link.classList.remove('text-slate-600', 'dark:text-slate-400');
-                        link.classList.add('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700');
+                        link.classList.add('text-brand-700', 'bg-brand-100', 'font-bold', 'dark:text-brand-300', 'dark:bg-slate-700/50');
+                        
+                        // Auto-scroll sidebar if active item is out of view
+                        const linkRect = link.getBoundingClientRect();
+                        const sidebar = link.closest('.overflow-y-auto');
+                        if (sidebar) {
+                            const sidebarRect = sidebar.getBoundingClientRect();
+                            if (linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
+                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        }
                     }
                 });
             }, { passive: true });
