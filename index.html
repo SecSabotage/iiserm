@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IISER Mohali Survival Guide</title>
+    <title>Junior Survival Guide</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -83,7 +83,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
                         </svg>
-                        <h1 class="text-xl md:text-2xl font-bold tracking-tight">IISER Mohali Junior Guide</h1>
+                        <h1 class="text-xl md:text-2xl font-bold tracking-tight">Junior Survival Guide</h1>
                     </div>
                     <!-- Theme Toggle for Mobile -->
                     <button id="theme-toggle-mobile" class="md:hidden p-2 rounded-full hover:bg-white/10 text-brand-100 transition-colors" aria-label="Toggle Dark Mode">
@@ -178,14 +178,14 @@
 
     <!-- Live Data Parser and UI Generator -->
     <script>
-        // Data Structure Mapping
+        // Cleaned Data Structure Mapping (Removed Redundant "IISER Mohali" and "Guide" terms)
         const documentStructure = {
-            "IISER Mohali Campus Deliveries, Transport, and Local Services Guide": [
+            "Campus Deliveries, Transport, and Local Services": [
                 "Deliveries, Post, and Couriers",
                 "Campus Transport and Local Travel",
                 "Local Services, Repairs, and Daily Utilities"
             ],
-            "IISER Mohali Academic and Library Handbook": [
+            "Academic and Library Handbook": [
                 "Library Access, Timings, and Borrowing Rules",
                 "Study Rooms and Printing",
                 "ERP Course Registration and Issues",
@@ -194,7 +194,7 @@
                 "Internships and NOCs",
                 "Certificates, Transcripts, and Research Access"
             ],
-            "IISER Mohali Campus Facilities and Daily Amenities Guide": [
+            "Campus Facilities and Daily Amenities": [
                 "Eateries, Canteens, and Mess",
                 "Campus Stores (Shop C)",
                 "Hostel Living and Maintenance",
@@ -203,7 +203,7 @@
                 "Repairs and Local Services",
                 "Visitor's Hostel (VH) Booking"
             ],
-            "IISER Mohali Student Administrative and Campus Procedures Guide": [
+            "Student Administrative and Campus Procedures": [
                 "Gate Passes and Campus Exit/Entry Procedures",
                 "Institute ID Card Reissue",
                 "Bonafide Certificate",
@@ -222,13 +222,16 @@
                 "Health Insurance & Reimbursements",
                 "Nearby Pharmacies, Hospitals & Doctors"
             ],
-            "IISER Mohali Campus IT and Network Systems Guide": [
+            "Campus IT and Network Systems": [
                 "Wi-Fi, LAN, and VPN Access",
                 "Computer Centre (CC) and Printing",
                 "ERP, Email, and Official Accounts",
                 "Software, Subscriptions, and Research Access"
             ]
         };
+
+        // Set of valid minor categories to prevent parser from swallowing headers
+        const validCategories = new Set(Object.values(documentStructure).flat());
 
         // The raw dataset
         const rawData = `
@@ -543,7 +546,13 @@ Software, Subscriptions, and Research Access
             let trimmed = line.trim();
             if (!trimmed) return;
 
-            if (trimmed.startsWith('**Q:')) {
+            // Robustly check if a line is exactly a known minor category
+            if (validCategories.has(trimmed)) {
+                pushFaq(); // commit previous FAQ if any
+                currentCategory = trimmed;
+                isParsingA = false; // Reset parsing state so it doesn't swallow headers
+            }
+            else if (trimmed.startsWith('**Q:')) {
                 pushFaq(); 
                 let match = trimmed.match(/^\*\*Q:\s*(.*?)\*\*\s*A:(.*)$/);
                 if (match) {
@@ -562,9 +571,6 @@ Software, Subscriptions, and Research Access
             else if (isParsingA) {
                 currentA += "<br><span class='ml-4 block mt-1'>• " + trimmed + "</span>";
             } 
-            else {
-                currentCategory = trimmed;
-            }
         });
         pushFaq(); 
 
