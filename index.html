@@ -164,8 +164,10 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-brand-600 hover:bg-brand-700 text-white p-3 rounded-full shadow-lg shadow-brand-500/30 opacity-0 pointer-events-none transition-all duration-300 z-50 transform translate-y-4" aria-label="Back to Top">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+<button id="scroll-to-bottom" class="fixed bottom-8 right-8 bg-brand-600 hover:bg-brand-700 text-white p-3 rounded-full shadow-lg shadow-brand-500/30 transition-all duration-300 z-50 transform" aria-label="Scroll to Bottom">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
     </button>
 
     <!-- Toast Notification Container -->
@@ -684,7 +686,7 @@ Software, Subscriptions, and Research Access
             initScrollSpyFixed();
             initExpandAll();
             initCopyLinks();
-            initBackToTop();
+            initScrollToBottom();
             checkUrlHash();
         });
 
@@ -878,23 +880,32 @@ Software, Subscriptions, and Research Access
         }
 
         // Back to top floating button
-        function initBackToTop() {
-            const backToTopBtn = document.getElementById('back-to-top');
+        // Scroll to bottom floating button
+        function initScrollToBottom() {
+            const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
             
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                // Check if the user is near the bottom of the page (within 150px)
+                const isNearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 150);
+                
+                if (isNearBottom) {
+                    // Hide button when at the bottom
+                    scrollToBottomBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
                 } else {
-                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    // Show button otherwise
+                    scrollToBottomBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
                 }
             }, { passive: true });
 
-            backToTopBtn.addEventListener('click', () => {
+            scrollToBottomBtn.addEventListener('click', () => {
                 window.scrollTo({
-                    top: 0,
+                    top: document.body.scrollHeight, // Scrolls to the maximum height of the page
                     behavior: 'smooth'
                 });
             });
+            
+            // Trigger a scroll event on load to check initial state
+            window.dispatchEvent(new Event('scroll'));
         }
 
     </script>
